@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Entry_Editor/List_Entry.gd" type="Script" id=1]
+
+[node name="List_Entry" type="HBoxContainer"]
+margin_right = 1024.0
+margin_bottom = 20.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_top = 3.0
+margin_right = 1000.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "List_Entry_Label"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 1004.0
+margin_right = 1024.0
+margin_bottom = 20.0
+text = "X"
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

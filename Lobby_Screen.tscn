@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Lobby_Screen.gd" type="Script" id=1]
+[ext_resource path="res://Bingo/Bingo.tscn" type="PackedScene" id=2]
+
+[node name="Lobby_Screen" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 14.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_right = 70.0
+margin_bottom = 14.0
+text = "Username:"
+
+[node name="Username_Label" type="Label" parent="HBoxContainer"]
+margin_left = 74.0
+margin_right = 129.0
+margin_bottom = 14.0
+text = "Testuser"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+margin_top = 18.0
+margin_right = 1024.0
+margin_bottom = 32.0
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+margin_right = 62.0
+margin_bottom = 14.0
+text = "Lobby-Nr:"
+
+[node name="Lobby_Nr_Label" type="Label" parent="HBoxContainer2"]
+margin_left = 66.0
+margin_right = 106.0
+margin_bottom = 14.0
+text = "53466"
+
+[node name="Bingo" parent="." instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 36.0
+margin_right = 1024.0
+margin_bottom = 36.0
+
+[node name="Bingo_Button" type="Button" parent="."]
+margin_top = 40.0
+margin_right = 1024.0
+margin_bottom = 60.0
+text = "Bingo!"
+[connection signal="pressed" from="Bingo_Button" to="." method="_on_Bingo_Button_pressed"]

@@ -8,16 +8,32 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Reference",
+"class": "Session",
+"language": "GDScript",
+"path": "res://Session.gd"
+}, {
+"base": "Node",
+"class": "Session_Manager",
+"language": "GDScript",
+"path": "res://Session_Manager.gd"
+} ]
 _global_script_class_icons={
-
+"Session": "",
+"Session_Manager": ""
 }
 
 [application]
 
 config/name="Dice_Roller"
-run/main_scene="res://UI.tscn"
+run/main_scene="res://Main_Menu.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Scenes="*res://Scenes.tscn"
+Global="*res://Global.gd"
 
 [rendering]
 

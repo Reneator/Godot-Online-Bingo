@@ -10,5 +10,5 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-bingo_grid_size = 4
+bingo_grid_size = 6
 bingo_element = ExtResource( 2 )

@@ -7,15 +7,21 @@ export (PackedScene) var bingo_element
 
 var bingo_grid = []
 
-var bingo_list = []
+var disabled = false
 
-func _ready():
+signal change()
+
+
+func initialize(entries):
 	columns = bingo_grid_size
+	var index = 0
 	for y in range(bingo_grid_size):
 		for x in range(bingo_grid_size):
-			create_element(x, y)
+			var entry_data = entries[index]
+			create_element(x, y, entry_data)
+			index += 1
 
-func create_element(x, y):
+func create_element(x, y, entry_data):
 	var element = bingo_element.instance()
 	element.x = x
 	element.y = y
@@ -23,12 +29,22 @@ func create_element(x, y):
 		bingo_grid.append([])
 	bingo_grid[y].append(element)	
 	
-	element.text = "%d, %d" %[x, y]
+	element.text = entry_data
 	element.connect("pressed", self, "on_bingo_button_pressed")
 	add_child(element)
 
 func on_bingo_button_pressed():
 	check_for_bingo()
+	
+	var entries = convert_to_entries(bingo_grid)
+	emit_signal("change", entries)
+
+func convert_to_entries(grid_entries):
+	var entries = []
+	for x_row in bingo_grid:
+		for entry in x_row:
+			entries.append(entry.to_string())
+	return entries
 
 func check_for_bingo():
 	check_x_rows()

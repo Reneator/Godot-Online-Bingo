@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Create_Lobby_Screen.gd" type="Script" id=1]
+
+[node name="Create_Lobby_Screen" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 1024.0
+margin_bottom = 14.0
+text = "Create Lobby"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+margin_top = 18.0
+margin_right = 1024.0
+margin_bottom = 38.0
+
+[node name="Edit_List_Button" type="Button" parent="HBoxContainer2"]
+margin_right = 63.0
+margin_bottom = 20.0
+text = "Edit List"
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+margin_left = 67.0
+margin_top = 3.0
+margin_right = 129.0
+margin_bottom = 17.0
+text = "List-size: "
+
+[node name="List_Size_Label" type="Label" parent="HBoxContainer2"]
+margin_left = 133.0
+margin_top = 3.0
+margin_right = 141.0
+margin_bottom = 17.0
+text = "0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_top = 42.0
+margin_right = 1024.0
+margin_bottom = 66.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_top = 5.0
+margin_right = 58.0
+margin_bottom = 19.0
+text = "Grid-Size"
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer"]
+margin_left = 62.0
+margin_right = 136.0
+margin_bottom = 24.0
+min_value = 4.0
+value = 4.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+margin_top = 70.0
+margin_right = 1024.0
+margin_bottom = 90.0
+
+[node name="OK_Button" type="Button" parent="HBoxContainer3"]
+margin_right = 31.0
+margin_bottom = 20.0
+text = "OK"
+
+[node name="Cancel_Button" type="Button" parent="HBoxContainer3"]
+margin_left = 35.0
+margin_right = 89.0
+margin_bottom = 20.0
+text = "Cancel"
+[connection signal="pressed" from="HBoxContainer2/Edit_List_Button" to="." method="_on_Edit_List_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer3/OK_Button" to="." method="_on_OK_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer3/Cancel_Button" to="." method="_on_Cancel_Button_pressed"]

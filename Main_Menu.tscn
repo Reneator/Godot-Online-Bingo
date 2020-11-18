@@ -1,0 +1,66 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Main_Menu.gd" type="Script" id=2]
+
+[node name="Main_Menu" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_top = 5.0
+margin_right = 46.0
+margin_bottom = 19.0
+text = "Name: "
+
+[node name="NameLineEdit" type="LineEdit" parent="HBoxContainer"]
+margin_left = 50.0
+margin_right = 108.0
+margin_bottom = 24.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+margin_top = 28.0
+margin_right = 1024.0
+margin_bottom = 52.0
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+margin_top = 5.0
+margin_right = 70.0
+margin_bottom = 19.0
+text = "Lobby-Key:"
+
+[node name="Lobby_Key_Line_Edit" type="LineEdit" parent="HBoxContainer2"]
+margin_left = 74.0
+margin_right = 132.0
+margin_bottom = 24.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+margin_top = 56.0
+margin_right = 1024.0
+margin_bottom = 76.0
+
+[node name="Join_Game_Button" type="Button" parent="HBoxContainer3"]
+margin_right = 35.0
+margin_bottom = 20.0
+text = "Join"
+
+[node name="Create_Game_Button" type="Button" parent="HBoxContainer3"]
+margin_left = 39.0
+margin_right = 134.0
+margin_bottom = 20.0
+text = "Create Game"
+
+[node name="ErrorLabel" type="Label" parent="."]
+margin_top = 80.0
+margin_right = 1024.0
+margin_bottom = 94.0
+custom_colors/font_color = Color( 0.74902, 0.0509804, 0.0509804, 1 )
+[connection signal="pressed" from="HBoxContainer3/Join_Game_Button" to="." method="_on_Join_Game_Button_pressed"]
+[connection signal="pressed" from="HBoxContainer3/Create_Game_Button" to="." method="_on_Create_Game_Button_pressed"]

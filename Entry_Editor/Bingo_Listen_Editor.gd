@@ -5,8 +5,13 @@ export (PackedScene) var List_Element
 
 var entries = []
 
+func _ready():
+	load_state()
+
 func initialize(_entries):
 	entries = _entries
+	if not entries:
+		entries = []
 	for entry in entries:
 		create_entry(entry)
 
@@ -51,9 +56,7 @@ func _on_LineEdit_text_entered(new_text):
 
 func _on_OK_Button_pressed():
 	save()
-	get_tree().change_scene_to(Scenes.lobby_admin_screen)
-	
-	pass # Replace with function body.
+	get_tree().change_scene_to(Scenes.create_lobby_screen)
 
 
 func _on_Import_Button_pressed():
@@ -64,7 +67,8 @@ func _on_Export_Button_pressed():
 	pass # Replace with function body.
 
 func save():
-	pass
+	Global.entries = entries
 
 func load_state():
-	pass
+	var entries_list = Global.entries
+	initialize(entries_list)

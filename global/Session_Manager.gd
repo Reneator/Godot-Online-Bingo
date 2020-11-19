@@ -12,3 +12,10 @@ func get_session(request_session):
 	session.entries = ["1","2","3","4","5","6","7","8","9"]
 	session.grid_size = Global.host_session.grid_size
 	return session
+
+func get_player_list():
+	return {}
+
+func get_session_by_name(username):
+	var id = username
+	return

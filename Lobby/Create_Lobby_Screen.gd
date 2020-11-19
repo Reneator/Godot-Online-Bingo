@@ -1,6 +1,9 @@
 extends VBoxContainer
 
 
+func _ready():
+	load_state()
+
 
 func _on_OK_Button_pressed():
 	var valid = check_params()
@@ -38,4 +41,9 @@ func save():
 
 
 func load_state():
-	pass
+#	var session_preset = Global.session_preset
+#	if not session_preset:
+#		return
+	var entries = Global.entries
+	if entries:
+		$HBoxContainer2/List_Size_Label.text = str(entries.size())

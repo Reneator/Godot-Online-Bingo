@@ -11,7 +11,7 @@ func _on_Create_Game_Button_pressed():
 	var valid = check_name()
 	if valid:
 		save()
-		get_tree().change_scene("res://Create_Lobby_Screen.tscn")
+		get_tree().change_scene_to(Scenes.create_lobby_screen)
 
 func _on_Join_Game_Button_pressed():
 	var valid = check_name()

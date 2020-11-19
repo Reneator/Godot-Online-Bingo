@@ -34,9 +34,8 @@ func connect_to_lobby():
 	Global.is_host = false
 	
 
-func on_start_game(session_json):
+func on_start_game(session):
 	print("start call received by server!")
-	var session = Session.new().from_json(session_json)
 	Global.session = session
 	save()
 	get_tree().change_scene_to(Scenes.lobby_screen)

@@ -18,9 +18,10 @@ func on_bingo_change(parsed_entries):#entries are already parsed
 	update_session.lobby_key = current_session.lobby_key
 	update_session.grid_size = current_session.grid_size
 	update_session.entries = parsed_entries
-	rpc_id(1, "update_client_session", update_session)
+	var session_json = update_session.as_json()
+	rpc_id(1, "update_client_session", session_json)
 	
-	print(update_session)
+	print(session_json)
 
 func _on_Bingo_Button_pressed():
 	#bingo button unlocks when bingo is unlocked

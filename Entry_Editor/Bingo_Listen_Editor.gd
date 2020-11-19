@@ -56,6 +56,7 @@ func _on_LineEdit_text_entered(new_text):
 
 func _on_OK_Button_pressed():
 	save()
+	Global.save()
 	get_tree().change_scene_to(Scenes.create_lobby_screen)
 
 

@@ -1,17 +1,11 @@
 extends Control
-
-
+class_name Dice_Roller
 
 func _ready():
 	randomize()
 
-var rolls = []
-
-
 func _on_Button_pressed():
 	error_message("")
-	
-	rolls = []
 	
 	var number_of_throws = $VBoxContainer/HBoxContainer/Number_Of_Throws.text	
 	var dice_sides = $VBoxContainer/HBoxContainer/Dice_Sides.text
@@ -24,8 +18,16 @@ func _on_Button_pressed():
 	if not dice_sides or dice_sides.empty():
 		error_message("Bitte Würfelseiten-anzahl angeben!")
 		return
+	var rolls = roll_dice_multiples(dice_sides, number_of_throws, repetition)
+	
+	var throws = ""
+	for number in rolls:
+		throws += "%d\n" % number
+	
+	$VBoxContainer/Label.text = throws
 
-			
+static func roll_dice_multiples(dice_sides, number_of_throws, repetition = false):
+	var rolls = []
 	while true:
 		if rolls.size() >= int(dice_sides):
 			break
@@ -39,18 +41,13 @@ func _on_Button_pressed():
 				continue
 		
 		rolls.append(number)
-	
-	var throws = ""
-	for number in rolls:
-		throws += "%d\n" % number
-	
-	$VBoxContainer/Label.text = throws
+	return rolls
+
+static func roll_dice(dice_sides):
+	var rolled = rand_range(1, int(dice_sides)+1)
+	var number = int(rolled)
+	return number
 
 func error_message(error_message):
 	$VBoxContainer/Error_Label.text = error_message
 
-
-func roll_dice(dice_sides):
-	var rolled = rand_range(1, int(dice_sides)+1)
-	var number = int(rolled)
-	return number

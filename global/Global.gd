@@ -18,6 +18,10 @@ var saved_ip_address = "127.0.0.1:37256"
 
 var max_players = 100
 
+var grid_size = 4
+
+var port = 37256
+
 var is_host = false
 
 var is_connected = false
@@ -59,6 +63,8 @@ func get_save_dict():
 	var save_dict = {}
 	save_dict["user_name"] = user_name
 	save_dict["entries"] = entries
+	save_dict["port"] = port
+	save_dict["grid_size"] = grid_size
 	return save_dict
 
 func load_from_dict(save_dict):
@@ -68,3 +74,9 @@ func load_from_dict(save_dict):
 	entries = save_dict.get("entries")
 	if not entries:
 		entries = []
+	var saved_port =  save_dict.get("port")
+	if saved_port:
+		port = saved_port
+	var saved_grid_size = save_dict.get("grid_size")
+	if saved_grid_size:
+		grid_size = saved_grid_size

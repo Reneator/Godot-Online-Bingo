@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Control",
+"class": "Dice_Roller",
+"language": "GDScript",
+"path": "res://Dice_Roller.gd"
+}, {
 "base": "Reference",
 "class": "Session",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://global/Session_Manager.gd"
 } ]
 _global_script_class_icons={
+"Dice_Roller": "",
 "Session": "",
 "Session_Manager": ""
 }

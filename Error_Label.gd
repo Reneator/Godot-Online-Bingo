@@ -1,8 +1,8 @@
 extends Label
 
 
-func print_error(text):
-	text = text
+func print_error(_text):
+	text = _text
 
 
 func clear():

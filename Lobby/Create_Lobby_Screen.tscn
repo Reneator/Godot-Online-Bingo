@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Lobby/Create_Lobby_Screen.gd" type="Script" id=1]
+[ext_resource path="res://Error_Label.tscn" type="PackedScene" id=2]
 
 [node name="Create_Lobby_Screen" type="VBoxContainer"]
 anchor_right = 1.0
@@ -54,7 +55,7 @@ text = "Grid-Size"
 margin_left = 62.0
 margin_right = 136.0
 margin_bottom = 24.0
-min_value = 4.0
+min_value = 1.0
 value = 4.0
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="."]
@@ -89,6 +90,12 @@ margin_left = 35.0
 margin_right = 89.0
 margin_bottom = 20.0
 text = "Cancel"
+
+[node name="Error_Label" parent="." instance=ExtResource( 2 )]
+margin_top = 122.0
+margin_right = 1024.0
+margin_bottom = 136.0
+align = 0
 [connection signal="pressed" from="HBoxContainer2/Edit_List_Button" to="." method="_on_Edit_List_Button_pressed"]
 [connection signal="pressed" from="HBoxContainer3/OK_Button" to="." method="_on_OK_Button_pressed"]
 [connection signal="pressed" from="HBoxContainer3/Cancel_Button" to="." method="_on_Cancel_Button_pressed"]

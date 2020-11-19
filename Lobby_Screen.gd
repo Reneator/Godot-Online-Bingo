@@ -6,19 +6,19 @@ func _ready():
 
 func load_game():
 	var session : Session = Global.session
-	$HBoxContainer/Username_Label.text = session.username
-	$HBoxContainer2/Lobby_Nr_Label.text = session.lobby_key
+	$HBoxContainer/Username_Label.text = str(session.username)
+	$HBoxContainer2/Lobby_Nr_Label.text = str(session.lobby_key)
 	$Bingo.bingo_grid_size = session.grid_size
 	$Bingo.initialize(session.entries)
 	
-func on_bingo_change(entries):
+func on_bingo_change(parsed_entries):#entries are already parsed
 	var current_session : Session = Global.session
 	var update_session = Session.new()
-	update_session.entries = current_session.entries
 	update_session.username = current_session.username
 	update_session.lobby_key = current_session.lobby_key
 	update_session.grid_size = current_session.grid_size
-	update_session.entries = entries
+	update_session.entries = parsed_entries
+	rpc_id(1, "update_client_session", update_session)
 	
 	print(update_session)
 

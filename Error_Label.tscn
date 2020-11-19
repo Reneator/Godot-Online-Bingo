@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Error_Label.gd" type="Script" id=1]
+
+[node name="Error_Label" type="Label"]
+margin_top = 540.0
+margin_right = 1010.0
+margin_bottom = 554.0
+size_flags_vertical = 12
+custom_colors/font_color = Color( 0.52549, 0.0941176, 0.0941176, 1 )
+align = 1
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

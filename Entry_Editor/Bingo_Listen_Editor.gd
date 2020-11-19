@@ -40,10 +40,31 @@ func valid_text(text):
 	return true
 
 func clear_error():
-	$VBoxContainer/Error_Label.text = ""
+	$VBoxContainer/Error_Label.clear()
 
 func print_error(text):
-	$VBoxContainer/Error_Label.text = text
+	$VBoxContainer/Error_Label.print_error(text)
 
 func _on_LineEdit_text_entered(new_text):
 	process_text(new_text)
+
+
+func _on_OK_Button_pressed():
+	save()
+	get_tree().change_scene_to(Scenes.lobby_admin_screen)
+	
+	pass # Replace with function body.
+
+
+func _on_Import_Button_pressed():
+	pass # Replace with function body.
+
+
+func _on_Export_Button_pressed():
+	pass # Replace with function body.
+
+func save():
+	pass
+
+func load_state():
+	pass

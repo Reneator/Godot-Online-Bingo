@@ -26,6 +26,7 @@ margin_right = 108.0
 margin_bottom = 24.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
+visible = false
 margin_top = 28.0
 margin_right = 1024.0
 margin_bottom = 52.0
@@ -39,6 +40,22 @@ text = "Lobby-Key:"
 [node name="Lobby_Key_Line_Edit" type="LineEdit" parent="HBoxContainer2"]
 margin_left = 74.0
 margin_right = 132.0
+margin_bottom = 24.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="."]
+margin_top = 28.0
+margin_right = 1024.0
+margin_bottom = 52.0
+
+[node name="Label" type="Label" parent="HBoxContainer4"]
+margin_top = 5.0
+margin_right = 66.0
+margin_bottom = 19.0
+text = "IP-Adress:"
+
+[node name="IP_Line_Edit" type="LineEdit" parent="HBoxContainer4"]
+margin_left = 70.0
+margin_right = 128.0
 margin_bottom = 24.0
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="."]

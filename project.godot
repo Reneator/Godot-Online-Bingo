@@ -34,6 +34,8 @@ config/icon="res://icon.png"
 
 Scenes="*res://Scenes.tscn"
 Global="*res://Global.gd"
+NetworkMonitor="*res://Network_Monitor.gd"
+Game="*res://Game.gd"
 
 [rendering]
 

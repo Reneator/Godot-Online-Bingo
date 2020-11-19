@@ -90,6 +90,7 @@ margin_left = 924.0
 margin_right = 976.0
 margin_bottom = 20.0
 text = "Export"
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_changed"]
 [connection signal="text_entered" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/OK_Button" to="." method="_on_OK_Button_pressed"]

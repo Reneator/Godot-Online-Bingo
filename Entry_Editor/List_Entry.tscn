@@ -12,14 +12,21 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 margin_top = 3.0
-margin_right = 1000.0
+margin_right = 960.0
 margin_bottom = 17.0
 size_flags_horizontal = 3
 text = "List_Entry_Label"
 
-[node name="Button" type="Button" parent="."]
+[node name="Edit_Button" type="Button" parent="."]
+margin_left = 964.0
+margin_right = 1000.0
+margin_bottom = 20.0
+text = "Edit"
+
+[node name="Delete_Button" type="Button" parent="."]
 margin_left = 1004.0
 margin_right = 1024.0
 margin_bottom = 20.0
 text = "X"
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Edit_Button" to="." method="_on_Edit_Button_pressed"]
+[connection signal="pressed" from="Delete_Button" to="." method="_on_Button_pressed"]

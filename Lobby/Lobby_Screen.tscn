@@ -46,13 +46,16 @@ text = "53466"
 [node name="Bingo" parent="." instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 18.0
-margin_right = 1024.0
-margin_bottom = 18.0
+margin_left = 262.0
+margin_top = 17.0
+margin_right = 762.0
+margin_bottom = 517.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Bingo_Button" type="Button" parent="."]
-margin_top = 22.0
+margin_top = 522.0
 margin_right = 1024.0
-margin_bottom = 42.0
+margin_bottom = 542.0
 text = "Bingo!"
 [connection signal="pressed" from="Bingo_Button" to="." method="_on_Bingo_Button_pressed"]

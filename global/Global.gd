@@ -29,12 +29,16 @@ var is_connected = false
 
 var save_path = "user://Multi_Bingo.save"
 
+var upnp
+
 func _ready():
 	load_game()
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
 		save()
+		if upnp:
+			upnp.delete_port_mapping(port)
 		get_tree().quit()
 
 func save():

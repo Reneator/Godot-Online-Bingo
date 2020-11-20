@@ -10,14 +10,7 @@ func _ready():
 	$HTTPRequest.request("https://api.ipify.org")
 	$HBoxContainer3/Username.text = Global.user_name
 	var port = Global.port
-	var upnp = UPNP.new()
-	Global.upnp = upnp
-	var discover_results = upnp.discover()
-	print("Upnp-Discover-Results: " + str(discover_results))
-	print("Upnp-Devices:" + str(upnp.get_device_count()))
-	var devices = upnp.get_device(0)
-	var result = upnp.add_port_mapping(port)
-	print("Upnp-Result: " + str(result))
+
 
 func on_request_completed(result, response_code, headers, body):
 	var string = body.get_string_from_utf8()

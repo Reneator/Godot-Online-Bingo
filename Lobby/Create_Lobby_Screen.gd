@@ -5,11 +5,27 @@ func _ready():
 
 func _on_OK_Button_pressed():
 	var valid = check_params()
-	if valid:
-		create_server()
-		save()
-		Global.save()
-		get_tree().change_scene_to(Scenes.lobby_admin_screen)
+	if not valid:
+		return
+	var activated_upnp = activate_upnp()
+	if not activated_upnp:
+		return
+	create_server()
+	save()
+	Global.save()
+	get_tree().change_scene_to(Scenes.lobby_admin_screen)
+
+func activate_upnp():
+	var port = Global.port
+	var upnp = UPNP.new()
+	Global.upnp = upnp
+	var discover_results = upnp.discover()
+	var result = upnp.add_port_mapping(port)
+	match result:
+		UPNP.UPNP_RESULT_SUCCESS:
+			return true
+		_:
+			print_error("Port could not be registered. Is UPNP active on your Router and your Device allowed to set Ports via UPNP?")
 
 func create_server():
 	var port = get_port()

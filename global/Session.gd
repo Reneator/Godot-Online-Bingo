@@ -2,8 +2,9 @@ extends Reference
 class_name Session
 
 var username
+var ip_address
 var lobby_key
-var entries = []
+var bingo_entries = []
 var grid_size
 var peer_id
 
@@ -18,8 +19,9 @@ func from_json(json_string):
 func as_dict():
 	var dict = {}
 	dict["username"] = username
+	dict["ip_address"] = ip_address
 	dict["lobby_key"] = lobby_key
-	dict["entries"] = entries
+	dict["bingo_entries"] = bingo_entries
 	dict["grid_size"] = grid_size
 	dict["peer_id"] = peer_id
 	return dict
@@ -27,7 +29,8 @@ func as_dict():
 func from_dict(dict):
 	username = dict.get("username")
 	lobby_key = dict.get("lobby_key")
-	entries = dict.get("entries")
+	bingo_entries = dict.get("bingo_entries")
+	ip_address = dict.get("ip_address")
 	var grid_size_string = dict.get("grid_size")
 	if grid_size_string:
 		grid_size = int(grid_size_string)

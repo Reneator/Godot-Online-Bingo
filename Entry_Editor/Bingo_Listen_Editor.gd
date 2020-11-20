@@ -86,8 +86,8 @@ func _on_Export_Button_pressed():
 	pass # Replace with function body.
 
 func save():
-	Global.entries = get_entries_as_strings()
+	Global.bingo_entries = get_entries_as_strings()
 
 func load_state():
-	var entries_list = Global.entries
+	var entries_list = Global.bingo_entries
 	initialize(entries_list)

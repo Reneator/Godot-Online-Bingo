@@ -9,20 +9,35 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Create_Lobby_Settings",
+"language": "GDScript",
+"path": "res://global/Create_Lobby_Settings.gd"
+}, {
 "base": "Control",
 "class": "Dice_Roller",
 "language": "GDScript",
 "path": "res://Dice_Roller.gd"
+}, {
+"base": "Reference",
+"class": "Join_Lobby_Settings",
+"language": "GDScript",
+"path": "res://global/Join_Lobby_Settings.gd"
 }, {
 "base": "HBoxContainer",
 "class": "List_Entry",
 "language": "GDScript",
 "path": "res://Entry_Editor/List_Entry.gd"
 }, {
+"base": "Node",
+"class": "Lobby_Settings",
+"language": "GDScript",
+"path": "res://global/Lobby_Settings.gd"
+}, {
 "base": "Reference",
 "class": "Session",
 "language": "GDScript",
-"path": "res://Session.gd"
+"path": "res://global/Session.gd"
 }, {
 "base": "Node",
 "class": "Session_Manager",
@@ -30,8 +45,11 @@ _global_script_classes=[ {
 "path": "res://global/Session_Manager.gd"
 } ]
 _global_script_class_icons={
+"Create_Lobby_Settings": "",
 "Dice_Roller": "",
+"Join_Lobby_Settings": "",
 "List_Entry": "",
+"Lobby_Settings": "",
 "Session": "",
 "Session_Manager": ""
 }

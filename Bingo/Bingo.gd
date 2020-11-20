@@ -12,7 +12,8 @@ var disabled = false
 signal change()
 
 
-func initialize(entries):
+func initialize(entries, grid_size):
+	bingo_grid_size = grid_size
 	columns = bingo_grid_size
 	var index = 0
 	for y in range(bingo_grid_size):

@@ -22,6 +22,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 164.0
 margin_bottom = 164.0
+text = "FAAAAACK "
 
 [node name="Button2" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
 anchor_right = 0.0

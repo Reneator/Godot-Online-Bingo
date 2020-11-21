@@ -20,6 +20,8 @@ var upnp_port
 var is_host = false
 var is_connected = false
 
+var bingo_score = 0
+
 
 func _ready():
 	load_game()
@@ -59,8 +61,7 @@ func get_save_dict():
 	save_dict["create_lobby_settings"] = create_lobby_settings.save_state()
 	save_dict["join_lobby_settings"] = join_lobby_settings.save_state()
 	save_dict["bingo_entries"] = bingo_entries
-#	save_dict["user_name"] = user_name
-#	save_dict["entries"] = entries
+	save_dict["bingo_score"] = bingo_score
 	return save_dict
 
 func load_from_dict(save_dict):
@@ -69,7 +70,9 @@ func load_from_dict(save_dict):
 	var saved_entries = save_dict.get("bingo_entries")
 	if saved_entries:
 		bingo_entries = saved_entries
-
+	var saved_score = save_dict.get("bingo_score")
+	if saved_score:
+		bingo_score = saved_score
 
 var save_dict = {}
 

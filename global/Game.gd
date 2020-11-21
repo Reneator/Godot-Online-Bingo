@@ -3,7 +3,9 @@ extends Node
 signal start_game(session)
 signal client_ready(session)
 signal call_bingo(session)
+signal new_bingo(session)
 signal refresh_player_list(player_list_json)
+signal bingo_confirmed(session)
 
 remote func start_game(session_json):
 	var session = Session.new().from_json(session_json)	
@@ -24,3 +26,12 @@ remote func refresh_player_list(player_list_json): #{player_name: {hits:x, bingo
 remote func bingo_change(session_json):
 	var session = Session.new().from_json(session_json)
 	emit_signal("bingo_changed", session)
+
+remote func bingo_confirmed(session_json):
+	var session = Session.new().from_json(session_json)
+	emit_signal("bingo_confirmed", session)
+	
+remote func new_bingo(session_json):
+	var session = Session.new().from_json(session_json)
+	emit_signal("new_bingo", session)
+

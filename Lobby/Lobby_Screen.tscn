@@ -47,15 +47,29 @@ text = "53466"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 262.0
-margin_top = 17.0
+margin_top = 18.0
 margin_right = 762.0
-margin_bottom = 517.0
+margin_bottom = 518.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Bingo_Button" type="Button" parent="."]
+[node name="Control" type="Control" parent="."]
 margin_top = 522.0
 margin_right = 1024.0
-margin_bottom = 542.0
-text = "Bingo!"
-[connection signal="pressed" from="Bingo_Button" to="." method="_on_Bingo_Button_pressed"]
+margin_bottom = 522.0
+mouse_filter = 2
+
+[node name="AcceptDialog" type="AcceptDialog" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -67.3108
+margin_top = -313.221
+margin_right = 69.6892
+margin_bottom = -255.221
+window_title = "Warnung!"
+dialog_text = "User X got a Bingo!"
+__meta__ = {
+"_edit_use_anchors_": false
+}

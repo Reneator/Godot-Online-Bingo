@@ -14,6 +14,7 @@ func get_session(request_session, grid_size):
 	return session
 
 func generate_new(request_session, grid_size):
+	archive_session(request_session.username)
 	var session = Session.new()
 	session.peer_id = request_session.peer_id
 	var entries = select_bingo_entries(Global.bingo_entries, grid_size)
@@ -24,7 +25,13 @@ func generate_new(request_session, grid_size):
 
 func check_duplicate(entries):
 	pass
-	
+
+func archive_session(username):
+	for session in sessions:
+		if session.username == username:
+			session_history.append(session)
+			session.remove(session)
+
 func check_for_existing_session(request_session : Session):
 	for session in sessions:
 		if session.username == request_session.username:

@@ -43,10 +43,10 @@ func on_connect_to_server():
 	Global.is_connected = true
 	print("Successfully connected to server")	
 	var session = Session.new()
-	var user_name = get_user_name()
+	var username = get_username()
 	var peer_id = get_tree().get_network_unique_id()	
 #	var lobby_key = $HBoxContainer2/Lobby_Key_Line_Edit.text
-	session.username = user_name
+	session.username = username
 #	session.lobby_key = lobby_key
 #	session.grid_size = 3
 	session.peer_id = peer_id
@@ -77,14 +77,14 @@ func clear_error():
 func print_error(text):
 	$ErrorLabel.text = text
 
-func get_user_name():
+func get_username():
 	return $HBoxContainer/NameLineEdit.text
 
 func save():
-	join_lobby_settings.user_name = get_user_name()
+	join_lobby_settings.username = get_username()
 	join_lobby_settings.address_line = $HBoxContainer4/IP_Line_Edit.text
 	Global.save()
 
 func load_state():
 	$HBoxContainer4/IP_Line_Edit.text = join_lobby_settings.address_line
-	$HBoxContainer/NameLineEdit.text = join_lobby_settings.user_name
+	$HBoxContainer/NameLineEdit.text = join_lobby_settings.username

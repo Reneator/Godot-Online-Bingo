@@ -66,6 +66,7 @@ Scenes="*res://global/Scenes.tscn"
 Global="*res://global/Global.gd"
 NetworkMonitor="*res://global/Network_Monitor.gd"
 Game="*res://global/Game.gd"
+Events="*res://global/Events.gd"
 
 [rendering]
 

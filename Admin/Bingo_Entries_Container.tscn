@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Admin/Bingo_Entries_Container.gd" type="Script" id=1]
+
+[node name="Bingo_Entries_Container" type="VBoxContainer"]
+margin_right = 451.0
+margin_bottom = 26.0
+rect_clip_content = true
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 451.0
+margin_bottom = 14.0
+text = "Bingo-Entries:"
+
+[node name="HSeparator" type="HSeparator" parent="."]
+margin_top = 18.0
+margin_right = 451.0
+margin_bottom = 22.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+margin_top = 26.0
+margin_right = 451.0
+margin_bottom = 26.0
+scroll_horizontal_enabled = false
+
+[node name="Bingo_Entries" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 12.0
+margin_bottom = 20.0
+
+[node name="Bingo_Entry" type="Button" parent="ScrollContainer/Bingo_Entries"]
+margin_right = 12.0
+margin_bottom = 20.0

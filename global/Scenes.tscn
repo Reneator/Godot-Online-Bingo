@@ -5,7 +5,8 @@
 [ext_resource path="res://Main_Menu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Lobby/Lobby_Screen.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entry_Editor/Bingo_Listen_Editor.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Lobby/Lobby_Admin.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Admin/Lobby_Admin.tscn" type="PackedScene" id=6]
+
 
 
 

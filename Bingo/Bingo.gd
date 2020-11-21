@@ -7,10 +7,13 @@ export (PackedScene) var bingo_element
 
 var bingo_grid = []
 
-var disabled = false
-
 signal change()
 
+func initialize_with_preset_data(entries):
+	var grid_size = int(sqrt(entries.size()))
+	for entry in entries:
+		print(entry)
+	
 
 func initialize(entries, grid_size):
 	bingo_grid_size = grid_size

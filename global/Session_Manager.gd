@@ -9,9 +9,15 @@ func get_session(request_session, grid_size):
 	var session = Session.new()
 	session.peer_id = request_session.peer_id
 	var entries = select_bingo_entries(Global.bingo_entries, grid_size)
+	var is_duplicate = check_duplicate(entries)
 	session.bingo_entries = entries
 	session.grid_size = grid_size
 	return session
+
+func check_duplicate(entries):
+	pass
+	
+
 
 func select_bingo_entries(entries, grid_size):
 	var new_entries = []

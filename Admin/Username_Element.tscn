@@ -12,9 +12,16 @@ margin_right = 78.0
 margin_bottom = 20.0
 text = "Username"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Label" type="Label" parent="."]
 margin_left = 82.0
-margin_right = 102.0
+margin_top = 3.0
+margin_right = 90.0
+margin_bottom = 17.0
+text = "0"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 94.0
+margin_right = 114.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 20, 20 )
 color = Color( 0.65098, 0.156863, 0.156863, 1 )

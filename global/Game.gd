@@ -6,6 +6,7 @@ signal call_bingo(session)
 signal new_bingo(session)
 signal refresh_player_list(player_list_json)
 signal bingo_confirmed(session)
+signal update_client_session(session)
 
 remote func start_game(session_json):
 	var session = Session.new().from_json(session_json)	
@@ -35,3 +36,6 @@ remote func new_bingo(session_json):
 	var session = Session.new().from_json(session_json)
 	emit_signal("new_bingo", session)
 
+remote func update_client_session(session_json):
+	var session = Session.new().from_json(session_json)
+	emit_signal("update_client_session", session)

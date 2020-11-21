@@ -8,6 +8,7 @@ onready var create_lobby_settings: Create_Lobby_Settings = Global.create_lobby_s
 
 func _ready():
 	Game.connect("client_ready", self, "on_client_ready")
+	Game.connect("update_client_session", self, "on_update_client_session")
 	Game.connect("bingo_confirmed", self, "on_bingo_confirmed")
 	Events.connect("admin_username_clicked", self, "on_username_clicked")
 	$HTTPRequest.connect("request_completed", self, "on_request_completed")
@@ -34,6 +35,10 @@ func on_bingo_confirmed(confirmed_session : Session):
 	var new_session = session_manager.generate_new(confirmed_session, grid_size)
 	var session_json = new_session.as_json()
 	rpc_id(confirmed_session.peer_id, "new_bingo", session_json)
+
+func on_update_client_session(session: Session):
+	session_manager.update_session(session)
+	print("Updating Session!")
 
 func _on_Copy_IP_Button_pressed():
 	OS.set_clipboard(full_ip_string)

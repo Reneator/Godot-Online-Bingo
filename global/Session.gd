@@ -23,6 +23,7 @@ func as_dict():
 	dict["ip_address"] = ip_address
 	dict["lobby_key"] = lobby_key
 	dict["bingo_entries"] = bingo_entries
+	dict["bingo_entries_state"] = bingo_entries_state	
 	dict["grid_size"] = grid_size
 	dict["peer_id"] = peer_id
 	return dict
@@ -31,6 +32,7 @@ func from_dict(dict):
 	username = dict.get("username")
 	lobby_key = dict.get("lobby_key")
 	bingo_entries = dict.get("bingo_entries")
+	bingo_entries_state = dict.get("bingo_entries_state")
 	ip_address = dict.get("ip_address")
 	var grid_size_string = dict.get("grid_size")
 	if grid_size_string:

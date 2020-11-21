@@ -17,14 +17,43 @@ func generate_new(request_session, grid_size):
 	archive_session(request_session.username)
 	var session = Session.new()
 	session.peer_id = request_session.peer_id
-	var entries = select_bingo_entries(Global.bingo_entries, grid_size)
-	var is_duplicate = check_duplicate(entries)
+	var entries = generate_entries(grid_size)
 	session.bingo_entries = entries
 	session.grid_size = grid_size
 	return session
 
+func generate_entries(grid_size, tries = 0, max_tries = 5):
+	if tries > max_tries:
+		print("Session Manager tried to generate new Bingo entries, but had duplicates for %d times while max tries are %d so it got cancelled" %[tries, max_tries])
+		return null
+	var entries = select_bingo_entries(Global.bingo_entries, grid_size)
+	var is_duplicate = check_duplicate(entries)
+	if is_duplicate:
+		return generate_entries(tries, max_tries)
+	else:
+		return entries
+
+func update_session(update_session : Session):
+	var session : Session = check_for_existing_session(update_session)
+	if not session:
+		print("No session found to update! Discarded Session Update!")
+		return
+	session.bingo_entries_state = update_session.bingo_entries_state
+
 func check_duplicate(entries):
-	pass
+	for session in session_history:
+		if compare_arrays(session, entries):
+			return true
+	for session in sessions:
+		if compare_arrays(session, entries):
+			return true
+	return false
+
+func compare_arrays(array_a, array_b):
+	for i in range(array_a.size()):
+		if array_a[i] != array_b[i]:
+			return false
+	return true
 
 func archive_session(username):
 	for session in sessions:

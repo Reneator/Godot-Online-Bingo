@@ -15,15 +15,13 @@ func load_game():
 	$HBoxContainer2/Lobby_Nr_Label.text = str(session.lobby_key)
 	$Bingo.initialize(session.bingo_entries,session.grid_size)
 	
-func on_bingo_change(parsed_entries):#entries are already parsed
+func on_bingo_change(bingo_state):
 	var current_session : Session = Global.game_session
 	var update_session = Session.new()
 	update_session.username = current_session.username
-	update_session.lobby_key = current_session.lobby_key
-	update_session.grid_size = current_session.grid_size
-	update_session.bingo_entries = parsed_entries
+	update_session.bingo_entries_state = bingo_state
 	var session_json = update_session.as_json()
-	rpc_id(1, "update_client_session", session_json)
+	Game.rpc_id(1, "update_client_session", session_json)
 	
 
 func on_bingo_confirmed(session: Session):

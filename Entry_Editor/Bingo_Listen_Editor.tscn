@@ -90,9 +90,55 @@ margin_left = 924.0
 margin_right = 976.0
 margin_bottom = 20.0
 text = "Export"
+
+[node name="Control" type="Control" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 593.0
+mouse_filter = 2
+
+[node name="Import_File_Dialog" type="FileDialog" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -250.0
+margin_right = 250.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 500, 500 )
+window_title = "Datei öffnen"
+mode = 0
+access = 2
+current_dir = "/Users/Horst/Documents/Dice_Roller"
+current_path = "/Users/Horst/Documents/Dice_Roller/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Export_File_Dialog" type="FileDialog" parent="Control"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -250.0
+margin_right = 250.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 500, 500 )
+window_title = "Datei speichern"
+access = 2
+current_dir = "/Users/Horst/Documents/Dice_Roller"
+current_path = "/Users/Horst/Documents/Dice_Roller/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="text_changed" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_changed"]
 [connection signal="text_entered" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/OK_Button" to="." method="_on_OK_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/HBoxContainer/Import_Button" to="." method="_on_Import_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/HBoxContainer/Export_Button" to="." method="_on_Export_Button_pressed"]
+[connection signal="file_selected" from="Control/Import_File_Dialog" to="." method="_on_Import_File_Dialog_file_selected"]
+[connection signal="file_selected" from="Control/Export_File_Dialog" to="." method="_on_Export_File_Dialog_file_selected"]

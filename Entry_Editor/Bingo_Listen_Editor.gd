@@ -79,11 +79,10 @@ func _on_OK_Button_pressed():
 	get_tree().change_scene_to(Scenes.create_lobby_screen)
 
 func _on_Import_Button_pressed():
-	pass # Replace with function body.
-
+	$Control/Import_File_Dialog.popup()
 
 func _on_Export_Button_pressed():
-	pass # Replace with function body.
+	$Control/Export_File_Dialog.popup()
 
 func save():
 	Global.bingo_entries = get_entries_as_strings()
@@ -91,3 +90,27 @@ func save():
 func load_state():
 	var entries_list = Global.bingo_entries
 	initialize(entries_list)
+
+func _on_Import_File_Dialog_file_selected(path):
+	var file = File.new()
+	file.open(path, File.READ)
+	var file_content = file.get_as_text()
+	if not file_content is String:
+		print_error("File content not String!")
+	
+	var lines = file_content.split("\n")
+	initialize(lines)
+	file.close()
+	save()
+
+func _on_Export_File_Dialog_file_selected(path):
+	var file = File.new()
+	file.open(path, File.WRITE)
+	var entries = get_entries_as_strings()
+	var file_line_content = ""
+	for entry in entries:
+		if not file_line_content == "":
+			file_line_content += "\n"
+		file_line_content += entry
+	file.store_string(file_line_content)
+	file.close()

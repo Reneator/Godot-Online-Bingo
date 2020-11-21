@@ -10,17 +10,6 @@ func _ready():
 	Game.connect("client_ready", self, "on_client_ready")
 	$HTTPRequest.connect("request_completed", self, "on_request_completed")
 	$HTTPRequest.request("https://api.ipify.org")
-	var user_name = Global.join_lobby_settings.user_name
-	$HBoxContainer3/Username.text = Global.join_lobby_settings.user_name
-#	var session = Session.new()
-#	session.username = user_name
-#	session.ip_address = "host"
-#	session.peer_id = 1
-#	session.grid_size = create_lobby_settings.grid_size
-#	Global.game_session = session_manager.get_session(session, create_lobby_settings.grid_size)
-#	$Bingo.initialize(Global.game_session.bingo_entries, Global.game_session.grid_size)
-#	for entry in Global.bingo_entries:
-#		$Label.text += entry + "\n"
 
 func on_request_completed(result, response_code, headers, body):
 	var string = body.get_string_from_utf8()

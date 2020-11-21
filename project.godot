@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://global/Session.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "Session_Manager",
 "language": "GDScript",
 "path": "res://global/Session_Manager.gd"

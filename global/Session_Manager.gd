@@ -1,11 +1,19 @@
-extends Node
+extends Reference
 class_name Session_Manager
 
 #only used by Lobby_Admin
+var sessions = []
 
-var sessions = {} #{username:{session}}
+var session_history = [] # collections of all sessions generated in the current sittings
 
 func get_session(request_session, grid_size):
+	var session = check_for_existing_session(request_session)
+	if session:
+		return session
+	session = generate_new(request_session, grid_size)
+	return session
+
+func generate_new(request_session, grid_size):
 	var session = Session.new()
 	session.peer_id = request_session.peer_id
 	var entries = select_bingo_entries(Global.bingo_entries, grid_size)
@@ -17,8 +25,11 @@ func get_session(request_session, grid_size):
 func check_duplicate(entries):
 	pass
 	
-
-
+func check_for_existing_session(request_session : Session):
+	for session in sessions:
+		if session.username == request_session.username:
+			return session
+			
 func select_bingo_entries(entries, grid_size):
 	var new_entries = []
 	var size = entries.size()
@@ -28,7 +39,6 @@ func select_bingo_entries(entries, grid_size):
 		new_entries.append(entries[index])
 	return new_entries
 	
-
 func get_player_list():
 	return {}
 

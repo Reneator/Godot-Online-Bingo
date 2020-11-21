@@ -7,8 +7,9 @@ var sessions = []
 var session_history = [] # collections of all sessions generated in the current sittings
 
 func get_session(request_session, grid_size):
-	var session = check_for_existing_session(request_session)
+	var session = check_for_existing_session(request_session.username)
 	if session:
+		session.peer_id = request_session.peer_id
 		return session
 	session = generate_new(request_session, grid_size)
 	return session
@@ -20,6 +21,8 @@ func generate_new(request_session, grid_size):
 	var entries = generate_entries(grid_size)
 	session.bingo_entries = entries
 	session.grid_size = grid_size
+	session.username = request_session.username
+	sessions.append(session)
 	return session
 
 func generate_entries(grid_size, tries = 0, max_tries = 5):
@@ -34,18 +37,20 @@ func generate_entries(grid_size, tries = 0, max_tries = 5):
 		return entries
 
 func update_session(update_session : Session):
-	var session : Session = check_for_existing_session(update_session)
+	var session : Session = check_for_existing_session(update_session.username)
 	if not session:
 		print("No session found to update! Discarded Session Update!")
 		return
 	session.bingo_entries_state = update_session.bingo_entries_state
 
 func check_duplicate(entries):
+	if entries.size() == 0:
+		return false
 	for session in session_history:
-		if compare_arrays(session, entries):
+		if compare_arrays(session.bingo_entries, entries):
 			return true
 	for session in sessions:
-		if compare_arrays(session, entries):
+		if compare_arrays(session.bingo_entries, entries):
 			return true
 	return false
 
@@ -61,9 +66,9 @@ func archive_session(username):
 			session_history.append(session)
 			session.remove(session)
 
-func check_for_existing_session(request_session : Session):
+func check_for_existing_session(username):
 	for session in sessions:
-		if session.username == request_session.username:
+		if session.username == username:
 			return session
 			
 func select_bingo_entries(entries, grid_size):

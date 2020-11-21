@@ -26,9 +26,13 @@ func on_client_ready(request_session):
 	print("on_client_ready!")
 
 	var client_session = session_manager.get_session(request_session, create_lobby_settings.grid_size)
+	add_username(request_session.username)
 	var client_session_json = client_session.as_json()
 
 	Game.rpc_id(client_session.peer_id, "start_game", client_session_json)
+
+func add_username(username):
+	$HBoxContainer2/User_List.add_username(username)
 
 func on_bingo_confirmed(confirmed_session : Session):
 	var grid_size = create_lobby_settings.grid_size
@@ -47,13 +51,12 @@ func _on_Copy_IP_Button_pressed():
 	if clip_board == full_ip_string:
 		print("Copied successfully")
 
-func on_username_clicked(session: Session):
+func on_username_clicked(username):
+	var session = session_manager.check_for_existing_session(username)
 	var popup_bingo = $Control/Bingo_Popup/VBoxContainer/Bingo
-	popup_bingo.disable = true
-	popup_bingo.initialize(session)
+	popup_bingo.disabled = true
+	popup_bingo.initialize_with_session(session)
 	$Control/Bingo_Popup.show()
-
-	
 
 
 func _on_Close_Button_pressed():

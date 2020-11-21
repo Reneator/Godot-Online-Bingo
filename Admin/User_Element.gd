@@ -1,8 +1,10 @@
 extends HBoxContainer
 
+var username
 
-var session : Session
+func initialize(_username):
+	username = _username
+	$Button.text = username
 
-func initialize(_session):
-	session = _session
-	$Label.text = session.username
+func _on_Button_pressed():
+	Events.emit_signal("admin_username_clicked", username)

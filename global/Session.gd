@@ -5,7 +5,7 @@ var username
 var ip_address
 var lobby_key
 var bingo_entries = [] # for initialization
-var bingo_entries_state = {} # for the current state of the bingo-field
+var bingo_entries_state = [] # for the current state of the bingo-field
 var grid_size
 var peer_id
 

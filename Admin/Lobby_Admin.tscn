@@ -69,10 +69,14 @@ margin_right = 1024.0
 margin_bottom = 50.0
 
 [node name="Bingo_Entries_Container" parent="HBoxContainer2" instance=ExtResource( 2 )]
+margin_right = 508.0
 
 [node name="Entries_Log" parent="HBoxContainer2" instance=ExtResource( 4 )]
+margin_left = 512.0
+margin_right = 1020.0
 
 [node name="User_List" parent="HBoxContainer2" instance=ExtResource( 1 )]
+margin_left = 1024.0
 
 [node name="Control" type="Control" parent="."]
 margin_top = 54.0

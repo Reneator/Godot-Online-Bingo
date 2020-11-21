@@ -5,30 +5,33 @@ export (int) var grid_size = 3
 
 export (PackedScene) var bingo_element
 
-var disabled = false
+export (bool) var disabled = false
 
 signal change()
 signal bingo()
 
-
 var rows
 
-func initialize_with_preset_data(entries):
-	var grid_size = int(sqrt(entries.size()))
-	for entry in entries:
-		print(entry)
+func initialize_with_session(session : Session):
+	var elements = initialize(session.bingo_entries, session.grid_size)
+	if session.bingo_entries_state.size() <= 0:
+		return
+	for i in range(elements.size()):
+		var pressed = session.bingo_entries_state[i]
+		var element = elements[i]
+		var is_pressed = (pressed == "True")
+		element.pressed = is_pressed
 	
 
 func initialize(entries, _grid_size):
+	var elements = []
 	clear()
 	grid_size = _grid_size
 	columns = grid_size
-	var index = 0
-	for y in range(grid_size):
-		for x in range(grid_size):
-			var entry_data = entries[index]
-			create_element(entry_data)
-			index += 1
+	for entry in entries:
+		var element = create_element(entry)
+		elements.append(element)
+	return elements
 
 func create_element(entry_data):
 	var element = bingo_element.instance()
@@ -38,6 +41,7 @@ func create_element(entry_data):
 		element.mouse_filter = MOUSE_FILTER_IGNORE
 	element.connect("pressed", self, "on_bingo_button_pressed")
 	add_child(element)
+	return element
 
 func clear():
 	for child in get_children():

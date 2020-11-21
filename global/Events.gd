@@ -1,4 +1,4 @@
 extends Node
 
 
-signal admin_username_clicked(session)
+signal admin_username_clicked(username)

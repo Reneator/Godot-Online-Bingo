@@ -45,18 +45,12 @@ func on_connect_to_server():
 	var session = Session.new()
 	var username = get_username()
 	var peer_id = get_tree().get_network_unique_id()	
-#	var lobby_key = $HBoxContainer2/Lobby_Key_Line_Edit.text
 	session.username = username
-#	session.lobby_key = lobby_key
-#	session.grid_size = 3
 	session.peer_id = peer_id
-#	Game.rpc_id()	
-#	Game.set_network_master(peer_id)
 	var session_dict = session.as_dict()
 	var session_json = JSON.print(session_dict)
 	
 	Game.rpc_id(1,"client_ready", session_json)
-
 	
 	
 func check_name():

@@ -6,8 +6,11 @@ var sessions = []
 
 var session_history = [] # collections of all sessions generated in the current sittings
 
+signal on_change()
+
 func get_session(request_session, grid_size):
 	var session = check_for_existing_session(request_session.username)
+	emit_signal("on_change")
 	if session:
 		session.peer_id = request_session.peer_id
 		session.is_connected = true	
@@ -24,6 +27,7 @@ func generate_new(request_session, grid_size):
 	session.grid_size = grid_size
 	session.username = request_session.username
 	session.is_connected = true
+	session.creation_date = OS.get_datetime()
 	sessions.append(session)
 	return session
 
@@ -44,6 +48,7 @@ func update_session(update_session : Session):
 		print("No session found to update! Discarded Session Update!")
 		return
 	session.bingo_entries_states = update_session.bingo_entries_states
+	emit_signal("on_change")
 
 func check_duplicate(entries):
 	if entries.size() == 0:
@@ -103,3 +108,6 @@ func disconnect_session(peer_id):
 			session.is_connected = false
 			print("Session of peer_id %s disconnected!" % peer_id)
 			return
+	emit_signal("on_change")
+
+

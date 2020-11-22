@@ -23,6 +23,7 @@ var bingo_score = 0
 
 
 func _ready():
+	randomize()
 	load_game()
 
 func _notification(what):

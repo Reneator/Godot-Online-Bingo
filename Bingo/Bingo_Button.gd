@@ -4,13 +4,16 @@ var is_valid
 
 var creation_date
 
-func _ready():
-	if not creation_date:
-		return
-	if is_valid:
-		self_modulate = Color.green
+
+func refresh():
+	if pressed:
+		if is_valid:
+			self_modulate = Color.green
+		else:
+			self_modulate = Color.red
 	else:
-		self_modulate = Color.red
+		if is_valid:
+			self_modulate = Color.blue
 
 
 func to_string():

@@ -24,6 +24,7 @@ func initialize_with_session(session : Session):
 		if session.bingo_entries_validation.size() > 0:
 			element.creation_date = session.creation_date
 			element.is_valid = session.bingo_entries_validation[i]
+			element.refresh()
 	
 
 func initialize(entries, _grid_size):

@@ -53,7 +53,10 @@ func on_update_client_session(session: Session):
 	session_manager.update_session(session)
 	var is_bingo = check_bingo(session)
 	if is_bingo:
-		$Bingo_Confirm_Popup.show()
+		var bingo_session : Session = session_manager.get_session_by_username(session.username)
+		var bingo_validation_entries = $Lobby_Admin/HBoxContainer2/Entries_Log.validate_entries(bingo_session.bingo_entries, bingo_session.creation_date)
+		bingo_session.bingo_entries_validation = bingo_validation_entries
+		$Bingo_Confirm_Popup.add_session(bingo_session)
 
 func check_bingo(session: Session):
 	return Bingo.check_for_bingo(session.bingo_entries_states)

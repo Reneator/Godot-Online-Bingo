@@ -13,6 +13,9 @@ func _ready():
 	Events.connect("admin_username_clicked", self, "on_username_clicked")
 	$HTTPRequest.connect("request_completed", self, "on_request_completed")
 	$HTTPRequest.request("https://api.ipify.org")
+	$HBoxContainer2/Bingo_Entries_Container.connect("entry_clicked", self, "on_entry_clicked")
+	$HBoxContainer2/Bingo_Entries_Container.initialize(Global.bingo_entries)
+	$Control/Bingo_Confirm_Popup.validator = $HBoxContainer2/Entries_Log
 
 func on_request_completed(result, response_code, headers, body):
 	var string = body.get_string_from_utf8()
@@ -42,7 +45,15 @@ func on_bingo_confirmed(confirmed_session : Session):
 
 func on_update_client_session(session: Session):
 	session_manager.update_session(session)
-	print("Updating Session!")
+	var is_bingo = check_bingo(session)
+	if is_bingo:
+		$Control/Bingo_Confirm_Popup.show()
+		
+
+var bingo_queue = [] #sessions
+
+func check_bingo(session):
+	
 
 func _on_Copy_IP_Button_pressed():
 	OS.set_clipboard(full_ip_string)
@@ -62,3 +73,11 @@ func on_username_clicked(username):
 func _on_Close_Button_pressed():
 	$Control/Bingo_Popup.hide()
 	pass # Replace with function body.
+
+
+func _on_Confirm_Button_pressed():
+	$Control/Bingo_Confirm_Popup.hide()
+
+
+func _on_Reject_Button_pressed():
+	$Control/Bingo_Confirm_Popup.hide()

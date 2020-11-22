@@ -14,7 +14,6 @@ var join_lobby_settings : Join_Lobby_Settings = Join_Lobby_Settings.new()
 var game_session: Session
 
 var upnp
-
 var upnp_port
 
 var is_host = false

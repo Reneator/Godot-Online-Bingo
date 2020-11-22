@@ -1,5 +1,5 @@
 extends GridContainer
-
+class_name Bingo
 
 export (int) var grid_size = 3
 
@@ -21,6 +21,8 @@ func initialize_with_session(session : Session):
 		var element = elements[i]
 		var is_pressed = (pressed == "True")
 		element.pressed = is_pressed
+		if session.bingo_entries_validation.size() > 0:
+			element.is_valid = session.bingo_entries_validation[i]
 	
 
 func initialize(entries, _grid_size):
@@ -50,10 +52,11 @@ func clear():
 func on_bingo_button_pressed():
 	if disabled:
 		return
-	check_for_bingo()
-	
 	var entries = get_current_state()
+#	var is_bingo = check_for_bingo(entries)
 	emit_signal("change", entries)
+#	if is_bingo:
+#		emit_signal("bingo")
 
 func get_entries():
 	return get_children()
@@ -66,21 +69,21 @@ func get_current_state():
 	return entries
 	
 
-func check_for_bingo():
+static func check_for_bingo(entries):
 	#here i would have to reset the bingo when the admin rejects
 	var is_bingo = false
-	
-	is_bingo = check_x_rows() or is_bingo
-	is_bingo = check_y_rows() or is_bingo
-	is_bingo = check_diagonal() or is_bingo
-	if is_bingo:
-		bingo()
+	var rows = get_rows(entries)
+	is_bingo = check_x_rows(entries) or is_bingo
+	is_bingo = check_y_rows(entries) or is_bingo
+	is_bingo = check_diagonal(entries) or is_bingo
+	return is_bingo
+#	if is_bingo:
+#		bingo()
 
-func check_x_rows():
-	var entries = get_children()
+static func check_x_rows(entries):
 	var index = 0
 	
-	var rows = get_rows()
+	var rows = get_rows(entries)
 		
 	for x_row in rows:
 		var is_bingo = true
@@ -89,10 +92,7 @@ func check_x_rows():
 		if is_bingo:
 			return true
 
-func get_rows():
-	if rows:
-		return rows
-	var entries = get_entries()
+static func get_rows(entries):
 	var new_array = []
 	var current_array
 	for i in range(entries.size()):
@@ -103,8 +103,8 @@ func get_rows():
 		current_array.append(entries[i])
 	return new_array
 
-func check_y_rows():
-	var rows = get_rows()
+static func check_y_rows(entries):
+	var rows = get_rows(entries)
 	for y in range(grid_size):
 		var is_bingo = true
 		for x_row in rows:
@@ -112,8 +112,8 @@ func check_y_rows():
 		if is_bingo:
 			return true
 
-func check_diagonal():
-	var rows = get_rows()
+static func check_diagonal(entries):
+	var rows = get_rows(entries)
 	var has_bingoed = false
 	var is_bingo = true
 	var x = 0

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Entry_Log/Entries_Log_UI.gd" type="Script" id=1]
+[ext_resource path="res://Entry_Log/Log_Entry.tscn" type="PackedScene" id=2]
+
+[node name="Entries_Log" type="VBoxContainer"]
+margin_right = 451.0
+margin_bottom = 26.0
+rect_clip_content = true
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+log_entry_scene = ExtResource( 2 )

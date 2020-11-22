@@ -6,9 +6,14 @@ var date_string : String
 
 
 func _ready():
-	text = "%s:%s" % [time_stamp, entry]
+	var date_string = get_date_string()
+	var time_string = date_string.split("_")[1]
+	text = "%s:%s" % [time_string, entry]
 
-func is_created_after(compare_date_string): # checks if the Log_entry was created after the input time_stamp
+func get_date_string():
 	if not date_string:
 		date_string = Date_Util.parse_to_string(time_stamp)
-	return date_string > compare_date_string
+	return date_string
+
+func is_created_after(compare_date_string): # checks if the Log_entry was created after the input time_stamp
+	return get_date_string() > compare_date_string

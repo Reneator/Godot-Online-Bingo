@@ -41,7 +41,7 @@ func update_session(update_session : Session):
 	if not session:
 		print("No session found to update! Discarded Session Update!")
 		return
-	session.bingo_entries_state = update_session.bingo_entries_state
+	session.bingo_entries_states = update_session.bingo_entries_states
 
 func check_duplicate(entries):
 	if entries.size() == 0:

@@ -6,7 +6,7 @@ var ip_address
 var lobby_key
 var creation_date 
 var bingo_entries = [] # for initialization
-var bingo_entries_state = [] # for the current state of the bingo-field
+var bingo_entries_states = [] # for the current state of the bingo-field
 var bingo_entries_validation = [] # for validation with the bingo-log
 var grid_size
 var peer_id
@@ -25,7 +25,7 @@ func as_dict():
 	dict["ip_address"] = ip_address
 	dict["lobby_key"] = lobby_key
 	dict["bingo_entries"] = bingo_entries
-	dict["bingo_entries_state"] = bingo_entries_state	
+	dict["bingo_entries_states"] = bingo_entries_states	
 	dict["grid_size"] = grid_size
 	dict["peer_id"] = peer_id
 	return dict
@@ -34,7 +34,7 @@ func from_dict(dict):
 	username = dict.get("username")
 	lobby_key = dict.get("lobby_key")
 	bingo_entries = dict.get("bingo_entries")
-	bingo_entries_state = dict.get("bingo_entries_state")
+	bingo_entries_states = dict.get("bingo_entries_states")
 	ip_address = dict.get("ip_address")
 	var grid_size_string = dict.get("grid_size")
 	if grid_size_string:

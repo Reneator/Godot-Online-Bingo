@@ -13,16 +13,15 @@ func _ready():
 	Events.connect("admin_username_clicked", self, "on_username_clicked")
 	$HTTPRequest.connect("request_completed", self, "on_request_completed")
 	$HTTPRequest.request("https://api.ipify.org")
-	$HBoxContainer2/Bingo_Entries_Container.connect("entry_clicked", self, "on_entry_clicked")
-	$HBoxContainer2/Bingo_Entries_Container.initialize(Global.bingo_entries)
-	$Control/Bingo_Confirm_Popup.validator = $HBoxContainer2/Entries_Log
+	$Lobby_Admin/HBoxContainer2/Bingo_Entries_Container.initialize(Global.bingo_entries)
+	$Bingo_Confirm_Popup.validator = $Lobby_Admin/HBoxContainer2/Entries_Log
 
 func on_request_completed(result, response_code, headers, body):
 	var string = body.get_string_from_utf8()
 	var ip = string
 	var port = str(Global.upnp_port)
-	$HBoxContainer/HBoxContainer/IP_Address.text = ip
-	$HBoxContainer/HBoxContainer/Port.text = port
+	$Lobby_Admin/HBoxContainer/HBoxContainer/IP_Address.text = ip
+	$Lobby_Admin/HBoxContainer/HBoxContainer/Port.text = port
 	full_ip_string = ip+":"+port
 
 func on_client_ready(request_session):
@@ -35,7 +34,7 @@ func on_client_ready(request_session):
 	Game.rpc_id(client_session.peer_id, "start_game", client_session_json)
 
 func add_username(username):
-	$HBoxContainer2/User_List.add_username(username)
+	$Lobby_Admin/HBoxContainer2/User_List.add_username(username)
 
 func on_bingo_confirmed(confirmed_session : Session):
 	var grid_size = create_lobby_settings.grid_size
@@ -47,13 +46,10 @@ func on_update_client_session(session: Session):
 	session_manager.update_session(session)
 	var is_bingo = check_bingo(session)
 	if is_bingo:
-		$Control/Bingo_Confirm_Popup.show()
-		
+		$Bingo_Confirm_Popup.show()
 
-var bingo_queue = [] #sessions
-
-func check_bingo(session):
-	
+func check_bingo(session: Session):
+	return Bingo.check_for_bingo(session.bingo_entries_states)
 
 func _on_Copy_IP_Button_pressed():
 	OS.set_clipboard(full_ip_string)
@@ -64,20 +60,20 @@ func _on_Copy_IP_Button_pressed():
 
 func on_username_clicked(username):
 	var session = session_manager.check_for_existing_session(username)
-	var popup_bingo = $Control/Bingo_Popup/VBoxContainer/Bingo
+	var popup_bingo = $Bingo_Popup/VBoxContainer/Bingo
 	popup_bingo.disabled = true
 	popup_bingo.initialize_with_session(session)
-	$Control/Bingo_Popup.show()
+	$Bingo_Popup.show()
 
 
 func _on_Close_Button_pressed():
-	$Control/Bingo_Popup.hide()
+	$Bingo_Popup.hide()
 	pass # Replace with function body.
 
 
 func _on_Confirm_Button_pressed():
-	$Control/Bingo_Confirm_Popup.hide()
+	$Bingo_Confirm_Popup.hide()
 
 
 func _on_Reject_Button_pressed():
-	$Control/Bingo_Confirm_Popup.hide()
+	$Bingo_Confirm_Popup.hide()

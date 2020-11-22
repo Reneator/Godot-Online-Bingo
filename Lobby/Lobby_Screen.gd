@@ -20,7 +20,7 @@ func on_bingo_change(bingo_state):
 	var update_session = Session.new()
 	update_session.username = current_session.username
 	update_session.peer_id = current_session.peer_id
-	update_session.bingo_entries_state = bingo_state
+	update_session.bingo_entries_states = bingo_state
 	var session_json = update_session.as_json()
 	Game.rpc_id(1, "update_client_session", session_json)
 	

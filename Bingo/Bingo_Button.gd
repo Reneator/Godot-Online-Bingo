@@ -2,17 +2,16 @@ extends Button
 
 var is_valid
 
-var date_string
-
+var creation_date
 
 func _ready():
-	if not do_validation:
+	if not creation_date:
 		return
 	if is_valid:
 		self_modulate = Color.green
 	else:
 		self_modulate = Color.red
-		
+
 
 func to_string():
 	return "%s,%s" %[text, pressed]

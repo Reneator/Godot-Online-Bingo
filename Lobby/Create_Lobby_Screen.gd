@@ -10,8 +10,8 @@ func _on_OK_Button_pressed():
 	if not valid:
 		return
 	var activated_upnp = activate_upnp()
-	if not activated_upnp:
-		return
+	if activated_upnp:
+		print_error("Error-code: %s Port could not be registered. Is UPNP active on your Router and your Device allowed to set Ports via UPNP?" % str(activated_upnp))
 	create_server()
 	Global.is_host = true
 	save()
@@ -28,13 +28,16 @@ func activate_upnp():
 			Global.upnp = upnp
 			Global.upnp_port = port
 			return true
-		_:
-			print_error("Port could not be registered. Is UPNP active on your Router and your Device allowed to set Ports via UPNP?")
+	return result
 
 func create_server():
 	var port = get_port()
 	var peer = NetworkedMultiplayerENet.new()
-	peer.create_server(port, 100)
+	var error = peer.create_server(port, 100)
+	if error:
+		print("not possible to create Server: " + str(error))
+		return false
+	Global.upnp_port = port
 	get_tree().set_network_peer(peer)
 	get_tree().set_meta("network_peer", peer)
 	print("Server created!")

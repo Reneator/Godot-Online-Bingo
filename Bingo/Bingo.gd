@@ -12,7 +12,7 @@ signal bingo()
 
 var rows
 
-func initialize_with_session(session : Session):
+func initialize_with_session(session : Session, validate = true):
 	var elements = initialize(session.bingo_entries, session.grid_size)
 	if session.bingo_entries_states.size() <= 0:
 		return
@@ -21,7 +21,7 @@ func initialize_with_session(session : Session):
 		var element = elements[i]
 		var is_pressed = (pressed == "True")
 		element.pressed = is_pressed
-		if session.bingo_entries_validation.size() > 0:
+		if validate and session.bingo_entries_validation.size() > 0:
 			element.creation_date = session.creation_date
 			element.is_valid = session.bingo_entries_validation[i]
 			element.refresh()

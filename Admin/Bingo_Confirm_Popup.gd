@@ -10,6 +10,9 @@ var current_session
 signal confirmed(session)
 signal rejected(session)
 
+func ready():
+	$VBoxContainer/Bingo.disabled = true
+
 func add_session(session: Session):
 	bingo_queue.append(session)
 	start_session()

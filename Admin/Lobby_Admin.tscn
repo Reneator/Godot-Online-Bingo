@@ -139,5 +139,5 @@ margin_left = 248.025
 margin_top = 31.0397
 margin_right = 762.025
 margin_bottom = 593.04
-[connection signal="pressed" from="Lobby_Admin/HBoxContainer/HBoxContainer/Copy_IP_Button" to="Lobby_Admin" method="_on_Copy_IP_Button_pressed"]
+[connection signal="pressed" from="Lobby_Admin/HBoxContainer/HBoxContainer/Copy_IP_Button" to="." method="_on_Copy_IP_Button_pressed"]
 [connection signal="pressed" from="Bingo_Popup/VBoxContainer/HBoxContainer/Close_Button" to="." method="_on_Close_Button_pressed"]

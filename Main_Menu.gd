@@ -10,7 +10,6 @@ func _ready():
 	Game.connect("start_game", self, "on_start_game")
 	Game.connect("server_error_message", self, "on_server_error_message")
 	
-
 func _on_Create_Game_Button_pressed():
 	var valid = check_name()
 	if valid:

@@ -72,7 +72,7 @@ func on_username_clicked(username):
 	var session = session_manager.check_for_existing_session(username)
 	var popup_bingo = $Bingo_Popup/VBoxContainer/Bingo
 	popup_bingo.disabled = true
-	popup_bingo.initialize_with_session(session)
+	popup_bingo.initialize_with_session(session, false)
 	$Bingo_Popup.show()
 
 func on_network_peer_disconnected(id):

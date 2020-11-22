@@ -65,13 +65,13 @@ margin_bottom = 94.0
 
 [node name="Label" type="Label" parent="HBoxContainer4"]
 margin_top = 5.0
-margin_right = 26.0
+margin_right = 94.0
 margin_bottom = 19.0
-text = "Port"
+text = "Port (TCP/UDP)"
 
 [node name="Port_Line_Edit" type="LineEdit" parent="HBoxContainer4"]
-margin_left = 30.0
-margin_right = 88.0
+margin_left = 98.0
+margin_right = 156.0
 margin_bottom = 24.0
 text = "37256"
 

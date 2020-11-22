@@ -11,6 +11,7 @@ func _ready():
 	Game.connect("update_client_session", self, "on_update_client_session")
 	Game.connect("bingo_confirmed", self, "on_bingo_confirmed")
 	Events.connect("admin_username_clicked", self, "on_username_clicked")
+	get_tree().connect("network_peer_disconnected", self, "on_network_peer_disconnected")
 	$HTTPRequest.connect("request_completed", self, "on_request_completed")
 	$HTTPRequest.request("https://api.ipify.org")
 	$Lobby_Admin/HBoxContainer2/Bingo_Entries_Container.initialize(Global.bingo_entries)
@@ -26,6 +27,12 @@ func on_request_completed(result, response_code, headers, body):
 
 func on_client_ready(request_session):
 	print("on_client_ready!")
+	
+	var username_used = session_manager.check_is_session_connected(request_session)
+	if username_used:
+		var error_message = "Username \"%s\" already connected! Please choose another name!" % request_session.username
+		Game.rpc_id(request_session.peer_id, "server_error_message",error_message)
+		return
 
 	var client_session = session_manager.get_session(request_session, create_lobby_settings.grid_size)
 	add_username(request_session.username)
@@ -65,6 +72,8 @@ func on_username_clicked(username):
 	popup_bingo.initialize_with_session(session)
 	$Bingo_Popup.show()
 
+func on_network_peer_disconnected(id):
+	session_manager.disconnect_session(id)
 
 func _on_Close_Button_pressed():
 	$Bingo_Popup.hide()

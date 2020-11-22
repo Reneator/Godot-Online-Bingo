@@ -6,7 +6,9 @@ onready var join_lobby_settings: Join_Lobby_Settings = Global.join_lobby_setting
 func _ready():
 	load_state()
 	get_tree().connect("connected_to_server", self, "on_connect_to_server")
+	get_tree().connect("server_disconnected", self, "on_disconnected")
 	Game.connect("start_game", self, "on_start_game")
+	Game.connect("server_error_message", self, "on_server_error_message")
 	
 
 func _on_Create_Game_Button_pressed():
@@ -20,6 +22,7 @@ func _on_Join_Game_Button_pressed():
 	if valid:
 		save()
 		connect_to_lobby()
+
 
 func connect_to_lobby(): 
 	var ip_address = $HBoxContainer4/IP_Line_Edit.text
@@ -38,20 +41,19 @@ func on_start_game(session):
 	get_tree().change_scene_to(Scenes.lobby_screen)
 
 func on_connect_to_server():
-	if Global.is_connected:
-		return
 	Global.is_connected = true
-	print("Successfully connected to server")	
-	var session = Session.new()
 	var username = get_username()
-	var peer_id = get_tree().get_network_unique_id()	
+	var peer_id = get_tree().get_network_unique_id()
+	var session = Session.new()	
 	session.username = username
 	session.peer_id = peer_id
-	var session_dict = session.as_dict()
-	var session_json = JSON.print(session_dict)
-	
+	var session_json = session.as_json()
 	Game.rpc_id(1,"client_ready", session_json)
-	
+	print("Successfully connected to server")	
+
+func on_disconnected():
+	Global.is_connected = false
+	print("Client: Disconnected from server!")
 	
 func check_name():
 	clear_error()
@@ -82,3 +84,6 @@ func save():
 func load_state():
 	$HBoxContainer4/IP_Line_Edit.text = join_lobby_settings.address_line
 	$HBoxContainer/NameLineEdit.text = join_lobby_settings.username
+
+func on_server_error_message(error_message):
+	print_error(error_message)

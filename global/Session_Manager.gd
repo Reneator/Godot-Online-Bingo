@@ -10,6 +10,7 @@ func get_session(request_session, grid_size):
 	var session = check_for_existing_session(request_session.username)
 	if session:
 		session.peer_id = request_session.peer_id
+		session.is_connected = true	
 		return session
 	session = generate_new(request_session, grid_size)
 	return session
@@ -22,6 +23,7 @@ func generate_new(request_session, grid_size):
 	session.bingo_entries = entries
 	session.grid_size = grid_size
 	session.username = request_session.username
+	session.is_connected = true
 	sessions.append(session)
 	return session
 
@@ -83,6 +85,21 @@ func select_bingo_entries(entries, grid_size):
 func get_player_list():
 	return {}
 
-func get_session_by_name(username):
-	var id = username
-	return
+func get_session_by_username(username):
+	for session in sessions:
+		if session.username == username:
+			return session
+
+
+func check_is_session_connected(request_session):
+	var session : Session = get_session_by_username(request_session.username)
+	if not session:
+		return false
+	return session.is_connected
+
+func disconnect_session(peer_id):
+	for session in sessions:
+		if session.peer_id == peer_id:
+			session.is_connected = false
+			print("Session of peer_id %s disconnected!" % peer_id)
+			return

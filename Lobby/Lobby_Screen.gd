@@ -4,7 +4,6 @@ onready var join_lobby_settings : Join_Lobby_Settings = Global.join_lobby_settin
 
 func _ready():
 	$Bingo.connect("change", self, "on_bingo_change")
-	$Bingo.connect("bingo", self, "on_bingo")
 	Game.connect("bingo_confirmed", self, "on_bingo_confirmed")
 	Game.connect("new_bingo", self, "on_new_bingo")
 	load_game()
@@ -35,6 +34,3 @@ func on_bingo_confirmed(session: Session):
 func on_new_bingo(session: Session):
 	$Bingo.initialize(session.bingo_entries)
 
-func on_bingo():
-	var session_json = Global.game_session.as_json()
-	rpc_id(1, "bingo", session_json)

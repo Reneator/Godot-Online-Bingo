@@ -10,6 +10,7 @@ var bingo_entries_states = [] # for the current state of the bingo-field
 var bingo_entries_validation = [] # for validation with the bingo-log
 var grid_size
 var peer_id
+var is_connected = false
 
 func as_json():
 	var dict = self.as_dict()

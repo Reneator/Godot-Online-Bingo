@@ -134,6 +134,7 @@ margin_right = 500.0
 margin_bottom = 524.0
 
 [node name="Bingo_Confirm_Popup" parent="." instance=ExtResource( 6 )]
+visible = false
 margin_left = 248.025
 margin_top = 31.0397
 margin_right = 762.025

@@ -19,6 +19,9 @@ func start_session():
 	show()
 	if not current_session:
 		current_session = bingo_queue.pop_front()
+		$VBoxContainer/HBoxContainer/Username_Label.text = current_session.username
+		var time_string = Date_Util.parse_to_string(current_session.creation_date).split("_")[1]
+		$VBoxContainer/HBoxContainer/Creation_Date_Label.text = time_string
 		$VBoxContainer/Bingo.initialize_with_session(current_session)
 
 func next_session():

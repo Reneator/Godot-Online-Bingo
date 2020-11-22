@@ -4,11 +4,10 @@
 [ext_resource path="res://Admin/Bingo_Confirm_Popup.gd" type="Script" id=4]
 
 [node name="Bingo_Confirm_Popup" type="PanelContainer"]
-visible = false
-margin_left = 249.147
-margin_top = -41.9203
-margin_right = 763.147
-margin_bottom = 520.08
+margin_left = 244.39
+margin_top = 27.0537
+margin_right = 758.39
+margin_bottom = 589.054
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -18,28 +17,54 @@ __meta__ = {
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 507.0
-margin_bottom = 555.0
+margin_bottom = 567.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_right = 500.0
+margin_bottom = 14.0
+text = "Bingo!!!"
+align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 18.0
 margin_right = 500.0
-margin_bottom = 20.0
+margin_bottom = 32.0
 
 [node name="Bingo_Popup_Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_top = 3.0
-margin_right = 476.0
-margin_bottom = 17.0
+margin_right = 74.0
+margin_bottom = 14.0
+text = "Username: "
+
+[node name="Username_Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 78.0
+margin_right = 345.0
+margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "Username"
 
-[node name="Bingo" parent="VBoxContainer" instance=ExtResource( 2 )]
-margin_top = 24.0
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 349.0
+margin_right = 440.0
+margin_bottom = 14.0
+text = "Creation Date:"
+
+[node name="Creation_Date_Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+margin_left = 444.0
 margin_right = 500.0
-margin_bottom = 524.0
+margin_bottom = 14.0
+text = "12:10:20"
+
+[node name="Bingo" parent="VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 36.0
+margin_right = 500.0
+margin_bottom = 536.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 528.0
+margin_top = 540.0
 margin_right = 500.0
-margin_bottom = 548.0
+margin_bottom = 560.0
 
 [node name="Confirm_Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
 margin_right = 62.0

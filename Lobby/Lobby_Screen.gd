@@ -2,6 +2,8 @@ extends VBoxContainer
 
 onready var join_lobby_settings : Join_Lobby_Settings = Global.join_lobby_settings
 
+var bingo_score = 0
+
 func _ready():
 	$Bingo.connect("change", self, "on_bingo_change")
 	Game.connect("bingo_confirmed", self, "on_bingo_confirmed")
@@ -25,6 +27,7 @@ func on_bingo_change(bingo_state):
 	
 
 func on_bingo_confirmed(session: Session):
+	bingo_score += 1
 	if session.username == join_lobby_settings.username:
 		Global.bingo_score += 1
 	else:
@@ -32,5 +35,6 @@ func on_bingo_confirmed(session: Session):
 		$Control/AcceptDialog.popup()
 
 func on_new_bingo(session: Session):
-	$Bingo.initialize(session.bingo_entries)
+	$HBoxContainer3/Bingo_Score.text = str(bingo_score)
+	$Bingo.initialize_with_session(session)
 

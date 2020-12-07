@@ -68,10 +68,16 @@ func compare_arrays(array_a, array_b):
 	return true
 
 func archive_session(username):
+	var index_to_remove
+	var index = -1
 	for session in sessions:
+		index += 1
 		if session.username == username:
 			session_history.append(session)
-			session.remove(session)
+			index_to_remove = index
+			break
+	if index_to_remove != null:
+		sessions.remove(index_to_remove)
 
 func check_for_existing_session(username):
 	for session in sessions:

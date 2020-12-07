@@ -21,7 +21,7 @@ func _on_OK_Button_pressed():
 func activate_upnp():
 	var port = create_lobby_settings.port
 	var upnp = UPNP.new()
-	var discover_results = upnp.discover()
+	var discover_results = upnp.discover(1)
 	var result = upnp.add_port_mapping(port)
 	match result:
 		UPNP.UPNP_RESULT_SUCCESS:

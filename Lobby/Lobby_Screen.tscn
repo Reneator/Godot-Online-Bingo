@@ -26,6 +26,22 @@ margin_right = 129.0
 margin_bottom = 14.0
 text = "Testuser"
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+margin_top = 18.0
+margin_right = 1024.0
+margin_bottom = 32.0
+
+[node name="Label" type="Label" parent="HBoxContainer3"]
+margin_right = 143.0
+margin_bottom = 14.0
+text = "Current Session Score:"
+
+[node name="Bingo_Score" type="Label" parent="HBoxContainer3"]
+margin_left = 147.0
+margin_right = 155.0
+margin_bottom = 14.0
+text = "0"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 visible = false
 margin_top = 18.0
@@ -47,16 +63,16 @@ text = "53466"
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 262.0
-margin_top = 18.0
+margin_top = 36.0
 margin_right = 762.0
-margin_bottom = 518.0
+margin_bottom = 536.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="Control" type="Control" parent="."]
-margin_top = 522.0
+margin_top = 540.0
 margin_right = 1024.0
-margin_bottom = 522.0
+margin_bottom = 540.0
 mouse_filter = 2
 
 [node name="AcceptDialog" type="AcceptDialog" parent="Control"]

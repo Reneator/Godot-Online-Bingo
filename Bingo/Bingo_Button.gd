@@ -1,24 +1,37 @@
-extends Button
+extends PanelContainer
 
 var is_valid
 
 var creation_date
 
+signal pressed()
+
+var pressed setget set_pressed
+
+func set_pressed(_pressed):
+	$Button.pressed = _pressed
+
+func get_pressed():
+	return $Button.pressed
 
 func refresh():
-	if pressed:
+	if get_pressed():
 		if is_valid:
-			self_modulate = Color.green
+			modulate = Color.green
 		else:
-			self_modulate = Color.red
+			modulate = Color.red
 	else:
 		if is_valid:
-			self_modulate = Color.blue
+			modulate = Color.blue
 
+func set_text(text):
+	$Label.text = text
 
 func to_string():
-	return "%s,%s" %[text, pressed]
+	return "%s,%s" %[$Label.text, get_pressed()]
 
 func get_state():
-	return str(pressed)
+	return str(get_pressed())
 	
+func _on_Button_pressed():
+	emit_signal("pressed")

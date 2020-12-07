@@ -9,13 +9,14 @@ onready var create_lobby_settings: Create_Lobby_Settings = Global.create_lobby_s
 func _ready():
 	Game.connect("client_ready", self, "on_client_ready")
 	Game.connect("update_client_session", self, "on_update_client_session")
-	Game.connect("bingo_confirmed", self, "on_bingo_confirmed")
+#	Game.connect("bingo_confirmed", self, "on_bingo_confirmed")
 	Events.connect("admin_username_clicked", self, "on_username_clicked")
 	get_tree().connect("network_peer_disconnected", self, "on_network_peer_disconnected")
 	$HTTPRequest.connect("request_completed", self, "on_request_completed")
 	$HTTPRequest.request("https://api.ipify.org")
+	$Bingo_Confirm_Popup.connect("confirmed", self, "on_bingo_confirmed")
 	$Lobby_Admin/HBoxContainer2/Bingo_Entries_Container.initialize(Global.bingo_entries)
-	$Bingo_Confirm_Popup.validator = $Lobby_Admin/HBoxContainer2/Entries_Log
+	$Bingo_Confirm_Popup.validator = $Lobby_Admin/HBoxContainer2/Scroll/Entries_Log
 
 func on_request_completed(result, response_code, headers, body):
 	var string = body.get_string_from_utf8()
@@ -47,14 +48,14 @@ func on_bingo_confirmed(confirmed_session : Session):
 	var grid_size = create_lobby_settings.grid_size
 	var new_session = session_manager.generate_new(confirmed_session, grid_size)
 	var session_json = new_session.as_json()
-	rpc_id(confirmed_session.peer_id, "new_bingo", session_json)
+	Game.rpc_id(confirmed_session.peer_id, "new_bingo", session_json)
 
 func on_update_client_session(session: Session):
 	session_manager.update_session(session)
 	var is_bingo = check_bingo(session)
 	if is_bingo:
 		var bingo_session : Session = session_manager.get_session_by_username(session.username)
-		var bingo_validation_entries = $Lobby_Admin/HBoxContainer2/Entries_Log.validate_entries(bingo_session.bingo_entries, bingo_session.creation_date)
+		var bingo_validation_entries = $Lobby_Admin/HBoxContainer2/Scroll/Entries_Log.validate_entries(bingo_session.bingo_entries, bingo_session.creation_date)
 		bingo_session.bingo_entries_validation = bingo_validation_entries
 		$Bingo_Confirm_Popup.add_session(bingo_session)
 

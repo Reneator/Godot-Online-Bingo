@@ -8,7 +8,8 @@
 [ext_resource path="res://Admin/Bingo_Confirm_Popup.tscn" type="PackedScene" id=6]
 
 [node name="Lobby_Admin" type="Control"]
-margin_right = 1024.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 3 )
 __meta__ = {
@@ -20,7 +21,6 @@ __meta__ = {
 [node name="Lobby_Admin" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 550.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -78,17 +78,25 @@ margin_right = 1024.0
 margin_bottom = 550.0
 
 [node name="Bingo_Entries_Container" parent="Lobby_Admin/HBoxContainer2" instance=ExtResource( 2 )]
-margin_right = 508.0
+margin_right = 460.0
 margin_bottom = 526.0
 
-[node name="Entries_Log" parent="Lobby_Admin/HBoxContainer2" instance=ExtResource( 4 )]
-margin_left = 512.0
-margin_right = 1020.0
+[node name="Scroll" type="ScrollContainer" parent="Lobby_Admin/HBoxContainer2"]
+margin_left = 464.0
+margin_right = 920.0
 margin_bottom = 526.0
+rect_min_size = Vector2( 456, 526 )
+scroll_horizontal_enabled = false
+
+[node name="Entries_Log" parent="Lobby_Admin/HBoxContainer2/Scroll" instance=ExtResource( 4 )]
+margin_right = 456.0
+margin_bottom = 526.0
+size_flags_vertical = 3
 
 [node name="User_List" parent="Lobby_Admin/HBoxContainer2" instance=ExtResource( 1 )]
-margin_left = 1024.0
+margin_left = 924.0
 margin_bottom = 526.0
+rect_min_size = Vector2( 100, 0 )
 
 [node name="Bingo_Popup" type="PanelContainer" parent="."]
 visible = false

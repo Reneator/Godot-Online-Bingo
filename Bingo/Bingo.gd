@@ -40,7 +40,7 @@ func initialize(entries, _grid_size):
 func create_element(entry_data):
 	var element = bingo_element.instance()
 	
-	element.text = entry_data
+	element.set_text(entry_data)
 	if disabled:
 		element.mouse_filter = MOUSE_FILTER_IGNORE
 	element.connect("pressed", self, "on_bingo_button_pressed")

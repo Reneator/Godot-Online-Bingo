@@ -3,8 +3,10 @@
 [ext_resource path="res://Entry_Log/Log_Entry.gd" type="Script" id=1]
 
 [node name="Label" type="Label"]
-margin_right = 451.0
+margin_right = 200.0
 margin_bottom = 14.0
+rect_min_size = Vector2( 200, 0 )
+autowrap = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

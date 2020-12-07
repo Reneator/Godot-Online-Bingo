@@ -1,12 +1,35 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Admin/Bingo_Entry.gd" type="Script" id=1]
 
-[node name="Bingo_Entry" type="Button"]
-margin_right = 12.0
-margin_bottom = 20.0
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="PanelContainer" type="PanelContainer"]
+margin_right = 200.0
+margin_bottom = 31.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="." to="." method="_on_Bingo_Entry_pressed"]
+
+[node name="Bingo_Entry" type="Button" parent="."]
+margin_right = 200.0
+margin_bottom = 31.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 200.0
+margin_bottom = 31.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Bingo Entry log test very very very very long test"
+align = 1
+valign = 1
+autowrap = true
+[connection signal="pressed" from="Bingo_Entry" to="." method="_on_Bingo_Entry_pressed"]

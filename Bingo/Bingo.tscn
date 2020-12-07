@@ -17,68 +17,43 @@ __meta__ = {
 bingo_element = ExtResource( 2 )
 
 [node name="Button" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 164.0
-margin_bottom = 164.0
-text = "FAAAAACK "
 
 [node name="Button2" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 168.0
-margin_right = 332.0
-margin_bottom = 164.0
+margin_left = 154.0
+margin_right = 304.0
 
 [node name="Button3" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 336.0
-margin_right = 500.0
-margin_bottom = 164.0
+margin_left = 308.0
+margin_right = 458.0
 
 [node name="Button4" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 168.0
-margin_right = 164.0
-margin_bottom = 332.0
+margin_top = 154.0
+margin_bottom = 304.0
 
 [node name="Button5" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 168.0
-margin_top = 168.0
-margin_right = 332.0
-margin_bottom = 332.0
+margin_left = 154.0
+margin_top = 154.0
+margin_right = 304.0
+margin_bottom = 304.0
 
 [node name="Button6" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 336.0
-margin_top = 168.0
-margin_right = 500.0
-margin_bottom = 332.0
+margin_left = 308.0
+margin_top = 154.0
+margin_right = 458.0
+margin_bottom = 304.0
 
 [node name="Button7" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 336.0
-margin_right = 164.0
-margin_bottom = 500.0
+margin_top = 308.0
+margin_bottom = 458.0
 
 [node name="Button8" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 168.0
-margin_top = 336.0
-margin_right = 332.0
-margin_bottom = 500.0
+margin_left = 154.0
+margin_top = 308.0
+margin_right = 304.0
+margin_bottom = 458.0
 
 [node name="Button9" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 336.0
-margin_top = 336.0
-margin_right = 500.0
-margin_bottom = 500.0
+margin_left = 308.0
+margin_top = 308.0
+margin_right = 458.0
+margin_bottom = 458.0

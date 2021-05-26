@@ -80,20 +80,21 @@ margin_right = 1024.0
 margin_bottom = 94.0
 
 [node name="Join_Game_Button" type="Button" parent="HBoxContainer3"]
-margin_right = 35.0
+margin_right = 77.0
 margin_bottom = 20.0
-text = "Join"
+text = "Join Game"
 
 [node name="Create_Game_Button" type="Button" parent="HBoxContainer3"]
-margin_left = 39.0
-margin_right = 134.0
+margin_left = 81.0
+margin_right = 206.0
 margin_bottom = 20.0
-text = "Create Game"
+text = "Create new Lobby"
 
 [node name="ErrorLabel" type="Label" parent="."]
 margin_top = 98.0
 margin_right = 1024.0
 margin_bottom = 112.0
 custom_colors/font_color = Color( 0.74902, 0.0509804, 0.0509804, 1 )
+
 [connection signal="pressed" from="HBoxContainer3/Join_Game_Button" to="." method="_on_Join_Game_Button_pressed"]
 [connection signal="pressed" from="HBoxContainer3/Create_Game_Button" to="." method="_on_Create_Game_Button_pressed"]

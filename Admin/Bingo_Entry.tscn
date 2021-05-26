@@ -32,4 +32,5 @@ text = "Bingo Entry log test very very very very long test"
 align = 1
 valign = 1
 autowrap = true
+
 [connection signal="pressed" from="Bingo_Entry" to="." method="_on_Bingo_Entry_pressed"]

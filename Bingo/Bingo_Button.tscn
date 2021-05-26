@@ -7,7 +7,8 @@
 [node name="Bingo_Button" type="PanelContainer"]
 margin_right = 150.0
 margin_bottom = 150.0
-rect_min_size = Vector2( 150, 150 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {

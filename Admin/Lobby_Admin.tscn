@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Admin/User_List.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Admin/Bingo_Entries_Container.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Admin/Admin_Entries_List.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Admin/Lobby_Admin.gd" type="Script" id=3]
-[ext_resource path="res://Entry_Log/Entries_Log_UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Entry_Log/Entry_Log_List.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Bingo/Bingo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Admin/Bingo_Confirm_Popup.tscn" type="PackedScene" id=6]
 
@@ -147,5 +147,6 @@ margin_left = 248.025
 margin_top = 31.0397
 margin_right = 762.025
 margin_bottom = 593.04
+
 [connection signal="pressed" from="Lobby_Admin/HBoxContainer/HBoxContainer/Copy_IP_Button" to="." method="_on_Copy_IP_Button_pressed"]
 [connection signal="pressed" from="Bingo_Popup/VBoxContainer/HBoxContainer/Close_Button" to="." method="_on_Close_Button_pressed"]

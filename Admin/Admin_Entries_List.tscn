@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Admin/Bingo_Entries_Container.gd" type="Script" id=1]
+[ext_resource path="res://Admin/Admin_Entries_List.gd" type="Script" id=1]
 [ext_resource path="res://Admin/Bingo_Entry.tscn" type="PackedScene" id=2]
 
 [node name="Bingo_Entries_Container" type="VBoxContainer"]

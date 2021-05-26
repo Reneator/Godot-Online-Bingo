@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Entry_Log/Entries_Log_UI.gd" type="Script" id=1]
+[ext_resource path="res://Entry_Log/Entry_Log_List.gd" type="Script" id=1]
 [ext_resource path="res://Entry_Log/Log_Entry.tscn" type="PackedScene" id=2]
 
 [node name="Entries_Log" type="VBoxContainer"]

@@ -3,6 +3,8 @@ class_name Dice_Roller
 
 func _ready():
 	randomize()
+	var multiplayer = get_tree()
+	print("blubb")
 
 func _on_Button_pressed():
 	error_message("")

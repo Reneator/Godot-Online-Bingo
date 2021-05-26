@@ -36,13 +36,13 @@ func on_client_ready(request_session):
 		return
 
 	var client_session = session_manager.get_session(request_session, create_lobby_settings.grid_size)
-	add_username(request_session.username)
+	add_user(client_session)
 	var client_session_json = client_session.as_json()
 
 	Game.rpc_id(client_session.peer_id, "start_game", client_session_json)
 
-func add_username(username):
-	$Lobby_Admin/HBoxContainer2/User_List.add_username(username)
+func add_user(session):
+	$Lobby_Admin/HBoxContainer2/User_List.add_user(session)
 
 func on_bingo_confirmed(confirmed_session : Session):
 	var grid_size = create_lobby_settings.grid_size

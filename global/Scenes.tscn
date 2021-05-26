@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://global/Scenes.gd" type="Script" id=1]
-[ext_resource path="res://Lobby/Create_Lobby_Screen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Admin/Create_Lobby_Screen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Main_Menu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Lobby/Lobby_Screen.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Lobby/Lobby_Client.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Entry_Editor/Entry_Editor.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Admin/Lobby_Admin.tscn" type="PackedScene" id=6]
 

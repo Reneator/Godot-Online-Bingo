@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Lobby/Lobby_Screen.gd" type="Script" id=1]
+[ext_resource path="res://Lobby/Lobby_Client.gd" type="Script" id=1]
 [ext_resource path="res://Bingo/Bingo.tscn" type="PackedScene" id=2]
 
 [node name="Lobby_Screen" type="VBoxContainer"]
@@ -25,6 +25,19 @@ margin_left = 74.0
 margin_right = 129.0
 margin_bottom = 14.0
 text = "Testuser"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer"]
+margin_left = 133.0
+margin_right = 1024.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Menu_Button" type="Button" parent="HBoxContainer/HBoxContainer"]
+margin_left = 800.0
+margin_right = 891.0
+margin_bottom = 20.0
+text = "Leave Game"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="."]
 margin_top = 18.0
@@ -89,3 +102,5 @@ dialog_text = "User X got a Bingo!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[connection signal="pressed" from="HBoxContainer/HBoxContainer/Menu_Button" to="." method="_on_Menu_Button_pressed"]

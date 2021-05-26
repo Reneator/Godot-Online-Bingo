@@ -2,12 +2,26 @@
 
 [ext_resource path="res://Entry_Log/Log_Entry.gd" type="Script" id=1]
 
-[node name="Label" type="Label"]
+[node name="Log_Entry" type="HBoxContainer"]
 margin_right = 200.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 200, 0 )
-autowrap = true
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Label" type="RichTextLabel" parent="."]
+margin_right = 176.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+fit_content_height = true
+scroll_active = false
+
+[node name="Delete_Button" type="Button" parent="."]
+margin_left = 180.0
+margin_right = 200.0
+margin_bottom = 20.0
+text = "X"
+
+[connection signal="pressed" from="Delete_Button" to="." method="_on_Delete_Button_pressed"]

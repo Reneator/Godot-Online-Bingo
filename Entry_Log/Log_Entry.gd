@@ -1,14 +1,16 @@
-extends Label
+extends Control
 
+var entry_nr : int
 var entry : String
 var time_stamp : Dictionary # datetime
 var date_string : String
 
+onready var label = $Label
 
 func _ready():
 	var date_string = get_date_string()
 	var time_string = date_string.split("_")[1]
-	text = "%s:%s" % [time_string, entry]
+	label.text = "%s:%s" % [time_string, entry]
 
 func get_date_string():
 	if not date_string:
@@ -25,3 +27,7 @@ func is_created_after(time_stamp): # checks if the Log_entry was created after t
 		print("incompatible Data-type used in is_created_after in Log_Entry")
 		return false
 	return get_date_string() > compare_date_string
+
+
+func _on_Delete_Button_pressed():
+	queue_free()

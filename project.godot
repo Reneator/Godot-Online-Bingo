@@ -68,7 +68,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Dice_Roller"
+config/name="Online Bingo"
 run/main_scene="res://Main_Menu.tscn"
 config/icon="res://icon.png"
 

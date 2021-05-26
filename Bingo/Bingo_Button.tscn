@@ -25,11 +25,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-margin_right = 150.0
-margin_bottom = 150.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="Label" type="Label" parent="Button"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 143.0
+margin_bottom = 143.0
+size_flags_vertical = 1
 text = "Faaacckkkkkk"
 align = 1
 valign = 1
@@ -37,4 +38,5 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

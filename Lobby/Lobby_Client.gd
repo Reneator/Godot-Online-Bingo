@@ -14,7 +14,7 @@ func load_game():
 	var session : Session = Global.game_session
 	$HBoxContainer/Username_Label.text = join_lobby_settings.username
 	$HBoxContainer2/Lobby_Nr_Label.text = str(session.lobby_key)
-	$Bingo.initialize(session.bingo_entries,session.grid_size)
+	$Bingo.initialize_with_session(session)
 	
 func on_bingo_change(bingo_state):
 	var current_session : Session = Global.game_session

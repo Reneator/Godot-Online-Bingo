@@ -17,7 +17,7 @@ func create_entry(text):
 	entry.connect("removed", self, "on_entry_removed")
 	entry.connect("edit", self, "on_entry_edit")
 	entry.text = text
-	$VBoxContainer/Entries.add_child(entry)
+	$VBoxContainer/ScrollContainer/Entries.add_child(entry)
 
 func on_entry_edit(entry : List_Entry):
 	edit_entry = entry
@@ -43,7 +43,7 @@ func valid_text(text):
 	return true
 
 func get_entries():
-	return $VBoxContainer/Entries.get_children()
+	return $VBoxContainer/ScrollContainer/Entries.get_children()
 	
 func get_entries_as_strings():
 	var entries = []

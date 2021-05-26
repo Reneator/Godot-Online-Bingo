@@ -28,5 +28,6 @@ margin_left = 1004.0
 margin_right = 1024.0
 margin_bottom = 20.0
 text = "X"
+
 [connection signal="pressed" from="Edit_Button" to="." method="_on_Edit_Button_pressed"]
 [connection signal="pressed" from="Delete_Button" to="." method="_on_Button_pressed"]

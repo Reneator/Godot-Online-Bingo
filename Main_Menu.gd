@@ -29,7 +29,8 @@ func connect_to_lobby():
 	var port_string = ip_address.split(":")[1]
 	var port = int(port_string)
 	var peer = NetworkedMultiplayerENet.new()
-	peer.create_client(address,port)
+	var create_client_result = peer.create_client(address,port)
+	print(create_client_result)
 	get_tree().set_network_peer(peer)
 	get_tree().set_meta("network_peer", peer)
 	

@@ -9,9 +9,11 @@ func _on_OK_Button_pressed():
 	var valid = check_params()
 	if not valid:
 		return
-	var activated_upnp = activate_upnp()
-	if activated_upnp:
-		print_error("Error-code: %s Port could not be registered. Is UPNP active on your Router and your Device allowed to set Ports via UPNP?" % str(activated_upnp))
+	var upnp_error = activate_upnp()
+	if upnp_error:
+		print_error("Error-code: %s Port could not be registered. Is UPNP active on your Router and your Device allowed to set Ports via UPNP?" % str(upnp_error))
+		var result = check_port()
+			
 	create_server()
 	Global.is_host = true
 	save()
@@ -28,6 +30,19 @@ func activate_upnp():
 			Global.upnp = upnp
 			Global.upnp_port = port
 			return true
+	return result
+
+func check_port():
+	var port = get_port()
+	print("Checking if UDP port %s is available" % port)
+	var udp_server = UDPServer.new()
+	var result = udp_server.listen(port,"0.0.0.0")
+#	print(result)
+	udp_server.stop()
+	if not result:
+		print("Port is available!")
+	else:
+		print("Port is unavailable: Errorcode: %s" % result)
 	return result
 
 func create_server():
@@ -88,6 +103,7 @@ func load_state():
 	$HBoxContainer4/Port_Line_Edit.text = str(port)
 
 func print_error(text):
+	print("Error: " + text)
 	$Error_Label.print_error(text)
 
 func clear_error():

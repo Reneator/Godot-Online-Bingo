@@ -37,4 +37,4 @@ func get_state():
 	return str(get_pressed())
 	
 func _on_Button_pressed():
-	emit_signal("s_s_pressed")
+	emit_signal("s_pressed")

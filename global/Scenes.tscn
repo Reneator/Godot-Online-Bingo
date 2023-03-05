@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://global/Scenes.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dnoohil5qop8u" path="res://Admin/Create_Lobby_Screen.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://hfshr27jh3jv" path="res://Main_Menu.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://Lobby/Lobby_Client.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://Entry_Editor/Entry_Editor.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://3p6yo5bm1t0n" path="res://Lobby/Lobby_Client.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cs11385c1ryx3" path="res://Entry_Editor/Entry_Editor.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://dgdwgiecxcc07" path="res://Admin/Lobby_Admin.tscn" id="6"]
 
 [node name="Scenes" type="Node"]

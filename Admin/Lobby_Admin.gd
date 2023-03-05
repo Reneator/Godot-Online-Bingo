@@ -51,6 +51,7 @@ func on_bingo_confirmed(confirmed_session : Session):
 	Game.rpc_id(confirmed_session.peer_id, "new_bingo", session_json)
 
 func on_update_client_session(session: Session):
+	print("Received Session update from client: %s" % session.peer_id)
 	session_manager.update_session(session)
 	var is_bingo = check_bingo(session)
 	if is_bingo:

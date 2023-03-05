@@ -1,6 +1,6 @@
 extends Control
 
-
+## Bluuuubbbb
 @export var List_Element : PackedScene
 
 var edit_entry : List_Entry #if this value is set the input line instead edits the line_entry

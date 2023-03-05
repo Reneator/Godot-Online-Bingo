@@ -39,6 +39,5 @@ func on_new_bingo(session: Session):
 	$Bingo.initialize_with_session(session)
 
 func _on_Menu_Button_pressed():
-	multiplayer.network_peer.close_connection()
+	multiplayer.multiplayer_peer.close()
 	get_tree().change_scene_to_packed(Scenes.main_menu)
-	pass # Replace with function body.

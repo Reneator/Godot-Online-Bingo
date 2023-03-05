@@ -77,7 +77,7 @@ func archive_session(username):
 			index_to_remove = index
 			break
 	if index_to_remove != null:
-		sessions.remove(index_to_remove)
+		sessions.remove_at(index_to_remove)
 
 func check_for_existing_session(username):
 	for session in sessions:

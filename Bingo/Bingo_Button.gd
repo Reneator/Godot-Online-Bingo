@@ -15,7 +15,7 @@ func set_pressed(_pressed):
 	button.button_pressed = _pressed
 
 func get_pressed():
-	return button.pressed
+	return button.button_pressed
 
 func refresh():
 	if get_pressed():

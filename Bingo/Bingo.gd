@@ -16,11 +16,12 @@ func initialize_with_session(session : Session, validate = true):
 	var elements = initialize(session.bingo_entries, session.grid_size)
 	if session.bingo_entries_states.size() <= 0:
 		return
+	#initialize all available bingo card entries to the previous session state
 	for i in range(elements.size()):
 		var pressed = session.bingo_entries_states[i]
 		var element = elements[i]
-		var is_pressed = (pressed == "True")
-		element.button_pressed = is_pressed
+		var is_pressed = (pressed == "true")
+		element.pressed = is_pressed
 		if validate and session.bingo_entries_validation.size() > 0:
 			element.creation_date = session.creation_date
 			element.is_valid = session.bingo_entries_validation[i]
@@ -82,11 +83,11 @@ static func check_for_bingo(entries):
 #		bingo()
 
 static func get_rows(entries):
-	var grid_size = int(sqrt(entries.size()))	
+	var _grid_size = int(sqrt(entries.size()))	
 	var new_array = []
 	var current_array
 	for i in range(entries.size()):
-		var index = i % grid_size
+		var index = i % _grid_size
 		if index == 0:
 			current_array = []
 			new_array.append(current_array)
@@ -95,43 +96,43 @@ static func get_rows(entries):
 
 static func check_x_rows(entries):
 	var index = 0
-	var grid_size = int(sqrt(entries.size()))
+	var _grid_size = int(sqrt(entries.size()))
 	
-	var rows = get_rows(entries)
+	var _rows = get_rows(entries)
 		
-	for x_row in rows:
+	for x_row in _rows:
 		var is_bingo = true
 		for entry in x_row:
-			is_bingo = entry == "True" and is_bingo
+			is_bingo = entry == "true" and is_bingo
 		if is_bingo:
 			return true
 
 static func check_y_rows(entries):
-	var grid_size = int(sqrt(entries.size()))	
-	var rows = get_rows(entries)
-	for y in range(grid_size):
+	var _grid_size = int(sqrt(entries.size()))	
+	var _rows = get_rows(entries)
+	for y in range(_grid_size):
 		var is_bingo = true
-		for x_row in rows:
-			is_bingo = x_row[y] == "True" and is_bingo
+		for x_row in _rows:
+			is_bingo = x_row[y] == "true" and is_bingo
 		if is_bingo:
 			return true
 
 static func check_diagonal(entries):
-	var grid_size = int(sqrt(entries.size()))
-	var rows = get_rows(entries)
+	var _grid_size = int(sqrt(entries.size()))
+	var _rows = get_rows(entries)
 	var has_bingoed = false
 	var is_bingo = true
 	var x = 0
-	for x_row in rows:
-		is_bingo = x_row[x] == "True" and is_bingo
+	for x_row in _rows:
+		is_bingo = x_row[x] == "true" and is_bingo
 		x+=1
 	if is_bingo:
 		return true
 
-	x = grid_size-1
+	x = _grid_size-1
 	is_bingo = true
-	for x_row in rows:
-		is_bingo = x_row[x] == "True" and is_bingo
+	for x_row in _rows:
+		is_bingo = x_row[x] == "true" and is_bingo
 		x-=1
 	if is_bingo:
 		return true

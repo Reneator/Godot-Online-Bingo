@@ -73,14 +73,6 @@ func load_from_dict(save_dict):
 	var saved_score = save_dict.get("bingo_score")
 	if saved_score:
 		bingo_score = saved_score
-
-var save_dict = {}
-
-func get_save_state(save_key):
-	return save_dict.get(save_key)
-
-func save_state(save_key, _save_dict):
-	save_dict[save_key] = _save_dict
 	
 	
 

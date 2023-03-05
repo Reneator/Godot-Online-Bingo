@@ -22,7 +22,6 @@ Global="*res://global/Global.gd"
 NetworkMonitor="*res://global/Network_Monitor.gd"
 Game="*res://global/Game.gd"
 Events="*res://global/Events.gd"
-Bingo_Admin_Entries_Log="*res://Entry_Log/Bingo_Admin_Entries_Log.gd"
 
 [rendering]
 

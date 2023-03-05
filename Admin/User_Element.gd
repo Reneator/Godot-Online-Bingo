@@ -3,7 +3,7 @@ extends HBoxContainer
 var session : Session
 var username
 
-onready var user_connected_color = $ColorRect
+@onready var user_connected_color = $ColorRect
 
 func initialize(_session):
 	session = _session
@@ -19,4 +19,4 @@ func _process(delta):
 		user_connected_color.color = Color("a62828")
 
 func _on_Button_pressed():
-	Events.emit_signal("admin_username_clicked", username)
+	Events.emit_signal("s_admin_username_clicked", username)

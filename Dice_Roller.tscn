@@ -18,63 +18,63 @@ __meta__ = {
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 24.0
+offset_right = 1024.0
+offset_bottom = 24.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_top = 5.0
-margin_right = 110.0
-margin_bottom = 19.0
+offset_top = 5.0
+offset_right = 110.0
+offset_bottom = 19.0
 text = "Anzahl der Würfe"
 
 [node name="Number_Of_Throws" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
-margin_left = 114.0
-margin_right = 172.0
-margin_bottom = 24.0
+offset_left = 114.0
+offset_right = 172.0
+offset_bottom = 24.0
 
 [node name="Label3" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 176.0
-margin_top = 5.0
-margin_right = 188.0
-margin_bottom = 19.0
+offset_left = 176.0
+offset_top = 5.0
+offset_right = 188.0
+offset_bottom = 19.0
 text = "   "
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 192.0
-margin_top = 5.0
-margin_right = 283.0
-margin_bottom = 19.0
+offset_left = 192.0
+offset_top = 5.0
+offset_right = 283.0
+offset_bottom = 19.0
 text = "#Würfelseiten"
 
 [node name="Dice_Sides" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
-margin_left = 287.0
-margin_right = 345.0
-margin_bottom = 24.0
+offset_left = 287.0
+offset_right = 345.0
+offset_bottom = 24.0
 
 [node name="CheckBox" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
-margin_left = 349.0
-margin_right = 466.0
-margin_bottom = 24.0
+offset_left = 349.0
+offset_right = 466.0
+offset_bottom = 24.0
 text = "Wiederholung"
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 470.0
-margin_right = 506.0
-margin_bottom = 24.0
+offset_left = 470.0
+offset_right = 506.0
+offset_bottom = 24.0
 text = "Roll"
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 28.0
-margin_right = 1024.0
-margin_bottom = 42.0
+offset_top = 28.0
+offset_right = 1024.0
+offset_bottom = 42.0
 
 [node name="Error_Label" type="Label" parent="VBoxContainer"]
-margin_top = 586.0
-margin_right = 1024.0
-margin_bottom = 600.0
+offset_top = 586.0
+offset_right = 1024.0
+offset_bottom = 600.0
 size_flags_vertical = 10
 custom_colors/font_color = Color( 0.847059, 0.137255, 0.137255, 1 )
 

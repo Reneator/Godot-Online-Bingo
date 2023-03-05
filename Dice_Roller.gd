@@ -13,11 +13,11 @@ func _on_Button_pressed():
 	var dice_sides = $VBoxContainer/HBoxContainer/Dice_Sides.text
 	var repetition = $VBoxContainer/HBoxContainer/CheckBox.pressed
 	
-	if not number_of_throws or number_of_throws.empty():
+	if not number_of_throws or number_of_throws.is_empty():
 		error_message("Bitte Anzahl der Würfelwürfe angeben")
 		return
 		
-	if not dice_sides or dice_sides.empty():
+	if not dice_sides or dice_sides.is_empty():
 		error_message("Bitte Würfelseiten-anzahl angeben!")
 		return
 	var rolls = roll_dice_multiples(dice_sides, number_of_throws, repetition)
@@ -46,7 +46,7 @@ static func roll_dice_multiples(dice_sides, number_of_throws, repetition = false
 	return rolls
 
 static func roll_dice(dice_sides):
-	var rolled = rand_range(1, int(dice_sides)+1)
+	var rolled = randf_range(1, int(dice_sides)+1)
 	var number = int(rolled)
 	return number
 

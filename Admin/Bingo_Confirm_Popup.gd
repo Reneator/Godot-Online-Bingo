@@ -7,8 +7,8 @@ var validator
 
 var current_session
 
-signal confirmed(session)
-signal rejected(session)
+signal s_confirmed(session)
+signal s_rejected(session)
 
 func ready():
 	$VBoxContainer/Bingo.disabled = true
@@ -30,16 +30,16 @@ func start_session():
 func next_session():
 	current_session = null
 	if bingo_queue.size() > 0:
-		 start_session()
+		start_session()
 		
 func _on_Confirm_Button_pressed():
-	emit_signal("confirmed", current_session)
+	emit_signal("s_confirmed", current_session)
 	next_session()
 	if not current_session:
 		hide()
 
 func _on_Reject_Button_pressed():
-	emit_signal("rejected", current_session)
+	emit_signal("s_rejected", current_session)
 	next_session()
 	if not current_session:
 		hide()

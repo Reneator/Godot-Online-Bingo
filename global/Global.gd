@@ -27,7 +27,7 @@ func _ready():
 	load_game()
 
 func _notification(what):
-	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		save()
 		if upnp:
 			upnp.delete_port_mapping(upnp_port)
@@ -36,23 +36,23 @@ func _notification(what):
 
 func save():
 	var save_dict = get_save_dict()
-	var file = File.new()
-	file.open(save_path, File.WRITE)
+	var file = FileAccess.open(save_path, FileAccess.WRITE)
 	file.store_var(save_dict)
 	file.close()
 
 func load_game():
 	var save_dict = load_save_dict()
-	if not save_dict:
+	if save_dict == null:
 		return
 	load_from_dict(save_dict)
 
 func load_save_dict():
-	var file = File.new()
+	var file = FileAccess.open(save_path, FileAccess.READ)
 	if not file.file_exists(save_path):
 		return
-	file.open(save_path, File.READ)
 	var save_dict = file.get_var(true)
+	if not save_dict is Dictionary:
+		return
 	file.close()
 	return save_dict
 

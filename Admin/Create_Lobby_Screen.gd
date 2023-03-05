@@ -1,6 +1,6 @@
 extends VBoxContainer
 
-onready var create_lobby_settings : Create_Lobby_Settings = Global.create_lobby_settings
+@onready var create_lobby_settings : Create_Lobby_Settings = Global.create_lobby_settings
 
 func _ready():
 	load_state()
@@ -18,7 +18,7 @@ func _on_OK_Button_pressed():
 	Global.is_host = true
 	save()
 	Global.save()
-	get_tree().change_scene_to(Scenes.lobby_admin_screen)
+	get_tree().change_scene_to_packed(Scenes.lobby_admin_screen)
 
 func activate_upnp():
 	var port = create_lobby_settings.port
@@ -47,20 +47,20 @@ func check_port():
 
 func create_server():
 	var port = get_port()
-	var peer = NetworkedMultiplayerENet.new()
+	var peer = ENetMultiplayerPeer.new()
 	var error = peer.create_server(port, 100)
 	if error:
 		print("not possible to create Server: " + str(error))
 		return false
 	Global.upnp_port = port
-	get_tree().set_network_peer(peer)
+	get_tree().get_multiplayer().set_multiplayer_peer(peer)
 	get_tree().set_meta("network_peer", peer)
 	print("Server created!")
 
 func check_params():
 	clear_error()
 	var port_text = $HBoxContainer4/Port_Line_Edit.text
-	if not port_text.is_valid_integer():
+	if not port_text.is_valid_int():
 		print_error("Please define a number for the port!")
 		return false
 	
@@ -74,11 +74,11 @@ func check_params():
 
 func _on_Cancel_Button_pressed():
 	save()
-	get_tree().change_scene_to(Scenes.main_menu)
+	get_tree().change_scene_to_packed(Scenes.main_menu)
 
 func _on_Edit_List_Button_pressed():
 	save()
-	get_tree().change_scene_to(Scenes.list_editor)
+	get_tree().change_scene_to_packed(Scenes.list_editor)
 
 func get_grid_size():
 	return int($HBoxContainer/Grid_Size.value)

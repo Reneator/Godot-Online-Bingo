@@ -14,44 +14,44 @@ __meta__ = {
 List_Element = ExtResource( 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1017.0
-margin_bottom = 593.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 1017.0
+offset_bottom = 593.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 1010.0
-margin_bottom = 24.0
+offset_right = 1010.0
+offset_bottom = 24.0
 
 [node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer"]
-margin_right = 986.0
-margin_bottom = 24.0
+offset_right = 986.0
+offset_bottom = 24.0
 size_flags_horizontal = 3
 placeholder_text = "Bingo Text"
 caret_blink = true
-caret_blink_speed = 0.5
+caret_blink_interval = 0.5
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 990.0
-margin_right = 1010.0
-margin_bottom = 24.0
+offset_left = 990.0
+offset_right = 1010.0
+offset_bottom = 24.0
 text = "+"
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
-margin_top = 28.0
-margin_right = 1010.0
-margin_bottom = 32.0
+offset_top = 28.0
+offset_right = 1010.0
+offset_bottom = 32.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
-margin_top = 36.0
-margin_right = 1010.0
-margin_bottom = 536.0
+offset_top = 36.0
+offset_right = 1010.0
+offset_bottom = 536.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -59,53 +59,53 @@ __meta__ = {
 }
 
 [node name="Entries" type="VBoxContainer" parent="VBoxContainer/ScrollContainer"]
-margin_right = 1010.0
-margin_bottom = 500.0
+offset_right = 1010.0
+offset_bottom = 500.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Error_Label" parent="VBoxContainer" instance=ExtResource( 2 )]
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 558.0
-margin_right = 1010.0
-margin_bottom = 562.0
+offset_top = 558.0
+offset_right = 1010.0
+offset_bottom = 562.0
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 566.0
-margin_right = 1010.0
-margin_bottom = 586.0
+offset_top = 566.0
+offset_right = 1010.0
+offset_bottom = 586.0
 
 [node name="OK_Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
-margin_right = 30.0
-margin_bottom = 20.0
+offset_right = 30.0
+offset_bottom = 20.0
 text = "Ok"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2"]
-margin_left = 34.0
-margin_right = 1010.0
-margin_bottom = 20.0
+offset_left = 34.0
+offset_right = 1010.0
+offset_bottom = 20.0
 size_flags_horizontal = 3
 alignment = 2
 
 [node name="Import_Button" type="Button" parent="VBoxContainer/HBoxContainer2/HBoxContainer"]
-margin_left = 864.0
-margin_right = 920.0
-margin_bottom = 20.0
+offset_left = 864.0
+offset_right = 920.0
+offset_bottom = 20.0
 size_flags_horizontal = 8
 text = "Import"
 
 [node name="Export_Button" type="Button" parent="VBoxContainer/HBoxContainer2/HBoxContainer"]
-margin_left = 924.0
-margin_right = 976.0
-margin_bottom = 20.0
+offset_left = 924.0
+offset_right = 976.0
+offset_bottom = 20.0
 text = "Export"
 
 [node name="Control" type="Control" parent="."]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 1017.0
-margin_bottom = 593.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 1017.0
+offset_bottom = 593.0
 mouse_filter = 2
 
 [node name="Import_File_Dialog" type="FileDialog" parent="Control"]
@@ -113,11 +113,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -250.0
-margin_top = -250.0
-margin_right = 250.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 500, 500 )
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+custom_minimum_size = Vector2( 500, 500 )
 window_title = "Datei öffnen"
 mode = 0
 access = 2
@@ -132,11 +132,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -250.0
-margin_top = -250.0
-margin_right = 250.0
-margin_bottom = 250.0
-rect_min_size = Vector2( 500, 500 )
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+custom_minimum_size = Vector2( 500, 500 )
 window_title = "Datei speichern"
 access = 2
 current_dir = "/Users/Horst/Documents/Dice_Roller"
@@ -146,7 +146,7 @@ __meta__ = {
 }
 
 [connection signal="text_changed" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_changed"]
-[connection signal="text_entered" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
+[connection signal="text_submitted" from="VBoxContainer/HBoxContainer/LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/OK_Button" to="." method="_on_OK_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/HBoxContainer/Import_Button" to="." method="_on_Import_Button_pressed"]

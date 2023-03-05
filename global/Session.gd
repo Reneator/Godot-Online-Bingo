@@ -1,4 +1,4 @@
-extends Reference
+extends RefCounted
 class_name Session
 
 var username
@@ -10,17 +10,20 @@ var bingo_entries_states = [] # for the current state of the bingo-field
 var bingo_entries_validation = [] # for validation with the bingo-log
 var grid_size
 var peer_id
-var is_connected = false setget set_connected
+var is_connected = false : set = set_connected
 
 func set_connected(_connected):
 	is_connected = _connected
 
 func as_json():
 	var dict = self.as_dict()
-	return to_json(dict)
+	var json_string = JSON.stringify(dict)
+	return json_string
 
 func from_json(json_string):
-	var dict = JSON.parse(json_string).result
+	var json = JSON.new()
+	var json_result = json.parse(json_string)
+	var dict = json.get_data()
 	return from_dict(dict)
 
 func as_dict():

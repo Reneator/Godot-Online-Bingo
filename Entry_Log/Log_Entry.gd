@@ -5,7 +5,7 @@ var entry : String
 var time_stamp : Dictionary # datetime
 var date_string : String
 
-onready var label = $Label
+@onready var label = $Label
 
 func _ready():
 	var date_string = get_date_string()
@@ -13,7 +13,7 @@ func _ready():
 	label.text = "%s:%s" % [time_string, entry]
 
 func get_date_string():
-	if not date_string:
+	if date_string == null:
 		date_string = Date_Util.parse_to_string(time_stamp)
 	return date_string
 

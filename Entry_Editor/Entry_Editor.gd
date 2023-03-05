@@ -1,7 +1,7 @@
 extends Control
 
 
-export (PackedScene) var List_Element
+@export var List_Element : PackedScene
 
 var edit_entry : List_Entry #if this value is set the input line instead edits the line_entry
 
@@ -13,9 +13,9 @@ func initialize(_entries):
 		create_entry(entry)
 
 func create_entry(text):
-	var entry = List_Element.instance()
-	entry.connect("removed", self, "on_entry_removed")
-	entry.connect("edit", self, "on_entry_edit")
+	var entry = List_Element.instantiate()
+	entry.connect("s_removed",Callable(self,"on_entry_removed"))
+	entry.connect("s_edit",Callable(self,"on_entry_edit"))
 	entry.text = text
 	$VBoxContainer/ScrollContainer/Entries.add_child(entry)
 
@@ -35,7 +35,7 @@ func process_text(text):
 	create_entry(text)
 	
 func valid_text(text):
-	if text == "" or not text:
+	if text == null or text == "":
 		return false
 	if has_text(text):
 		return false
@@ -77,7 +77,7 @@ func _on_OK_Button_pressed():
 	_on_Button_pressed()
 	save()
 	Global.save()
-	get_tree().change_scene_to(Scenes.create_lobby_screen)
+	get_tree().change_scene_to_packed(Scenes.create_lobby_screen)
 
 func _on_Import_Button_pressed():
 	$Control/Import_File_Dialog.popup()
@@ -93,8 +93,7 @@ func load_state():
 	initialize(entries_list)
 
 func _on_Import_File_Dialog_file_selected(path):
-	var file = File.new()
-	file.open(path, File.READ)
+	var file = FileAccess.open(path, FileAccess.READ)
 	var file_content = file.get_as_text()
 	if not file_content is String:
 		print_error("File content not String!")
@@ -105,8 +104,7 @@ func _on_Import_File_Dialog_file_selected(path):
 	save()
 
 func _on_Export_File_Dialog_file_selected(path):
-	var file = File.new()
-	file.open(path, File.WRITE)
+	var file = FileAccess.open(path, FileAccess.WRITE)
 	var entries = get_entries_as_strings()
 	var file_line_content = ""
 	for entry in entries:

@@ -1,101 +1,69 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://dnoohil5qop8u"]
 
-[ext_resource path="res://Error_Label.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Admin/Create_Lobby_Screen.gd" type="Script" id=2]
+[ext_resource type="PackedScene" path="res://Error_Label.tscn" id="1"]
+[ext_resource type="Script" path="res://Admin/Create_Lobby_Screen.gd" id="2"]
 
 [node name="Create_Lobby_Screen" type="VBoxContainer"]
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("2")
 
 [node name="Label" type="Label" parent="."]
-margin_right = 1024.0
-margin_bottom = 14.0
+layout_mode = 2
 text = "Create Lobby"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
-margin_top = 18.0
-margin_right = 1024.0
-margin_bottom = 38.0
+layout_mode = 2
 
 [node name="Edit_List_Button" type="Button" parent="HBoxContainer2"]
-margin_right = 63.0
-margin_bottom = 20.0
+layout_mode = 2
 text = "Edit List"
 
 [node name="Label" type="Label" parent="HBoxContainer2"]
-margin_left = 67.0
-margin_top = 3.0
-margin_right = 129.0
-margin_bottom = 17.0
+layout_mode = 2
 text = "List-size: "
 
 [node name="List_Size_Label" type="Label" parent="HBoxContainer2"]
-margin_left = 133.0
-margin_top = 3.0
-margin_right = 141.0
-margin_bottom = 17.0
+layout_mode = 2
 text = "0"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_top = 42.0
-margin_right = 1024.0
-margin_bottom = 66.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer"]
-margin_top = 5.0
-margin_right = 58.0
-margin_bottom = 19.0
+layout_mode = 2
 text = "Grid-Size"
 
 [node name="Grid_Size" type="SpinBox" parent="HBoxContainer"]
-margin_left = 62.0
-margin_right = 136.0
-margin_bottom = 24.0
+layout_mode = 2
 min_value = 1.0
 value = 4.0
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="."]
-margin_top = 70.0
-margin_right = 1024.0
-margin_bottom = 94.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="HBoxContainer4"]
-margin_top = 5.0
-margin_right = 94.0
-margin_bottom = 19.0
+layout_mode = 2
 text = "Port (TCP/UDP)"
 
 [node name="Port_Line_Edit" type="LineEdit" parent="HBoxContainer4"]
-margin_left = 98.0
-margin_right = 156.0
-margin_bottom = 24.0
+layout_mode = 2
 text = "37256"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="."]
-margin_top = 98.0
-margin_right = 1024.0
-margin_bottom = 118.0
+layout_mode = 2
 
 [node name="OK_Button" type="Button" parent="HBoxContainer3"]
-margin_right = 31.0
-margin_bottom = 20.0
+layout_mode = 2
 text = "OK"
 
 [node name="Cancel_Button" type="Button" parent="HBoxContainer3"]
-margin_left = 35.0
-margin_right = 89.0
-margin_bottom = 20.0
+layout_mode = 2
 text = "Cancel"
 
-[node name="Error_Label" parent="." instance=ExtResource( 1 )]
-margin_top = 122.0
-margin_right = 1024.0
-margin_bottom = 136.0
-align = 0
+[node name="Error_Label" parent="." instance=ExtResource("1")]
+layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer2/Edit_List_Button" to="." method="_on_Edit_List_Button_pressed"]
 [connection signal="pressed" from="HBoxContainer3/OK_Button" to="." method="_on_OK_Button_pressed"]

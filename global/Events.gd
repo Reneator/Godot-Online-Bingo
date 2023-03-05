@@ -1,5 +1,5 @@
 extends Node
 
 
-signal admin_username_clicked(username)
-signal bingo_entry_pressed(entry)
+signal s_admin_username_clicked(username)
+signal s_bingo_entry_pressed(entry)

@@ -1,11 +1,11 @@
-extends Reference
+extends RefCounted
 class_name Join_Lobby_Settings
 
 var username = ""
 var address_line = "127.0.0.1:37256"
 
 func load_state(save_dict):
-	if not save_dict:
+	if save_dict == null:
 		return
 	var saved_username = save_dict.get("username")
 	if saved_username:

@@ -1,13 +1,13 @@
 extends VBoxContainer
 
-export (PackedScene) var log_entry_scene
+@export var log_entry_scene : PackedScene
 
 func _ready():
-	Events.connect("bingo_entry_pressed", self, "add_entry")
+	Events.connect("s_bingo_entry_pressed",Callable(self,"add_entry"))
 
 func add_entry(entry_value):
-	var date_time = OS.get_datetime()
-	var log_entry = log_entry_scene.instance()
+	var date_time = Time.get_datetime_dict_from_system()
+	var log_entry = log_entry_scene.instantiate()
 	log_entry.entry = entry_value
 	log_entry.time_stamp = date_time
 	add_child(log_entry)

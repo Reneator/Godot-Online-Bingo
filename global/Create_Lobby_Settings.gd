@@ -1,4 +1,4 @@
-extends Reference
+extends RefCounted
 class_name Create_Lobby_Settings
 
 #var max_players = 100
@@ -8,7 +8,7 @@ var grid_size = 4
 var port = 37256
 
 func load_state(save_dict):
-	if not save_dict:
+	if save_dict == null:
 		return
 	var saved_grid_size = save_dict.get("grid_size")
 	if saved_grid_size:

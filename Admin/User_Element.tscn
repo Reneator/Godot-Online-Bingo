@@ -1,32 +1,23 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://voeaqpxonuw0"]
 
-[ext_resource path="res://Admin/User_Element.gd" type="Script" id=1]
+[ext_resource type="Script" path="res://Admin/User_Element.gd" id="1"]
 
 [node name="HBoxContainer" type="HBoxContainer"]
-margin_right = 1024.0
-margin_bottom = 20.0
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_right = 1024.0
+offset_bottom = 20.0
+script = ExtResource("1")
 
 [node name="Button" type="Button" parent="."]
-margin_right = 78.0
-margin_bottom = 20.0
+layout_mode = 2
 text = "Username"
 
 [node name="Label" type="Label" parent="."]
-margin_left = 82.0
-margin_top = 3.0
-margin_right = 90.0
-margin_bottom = 17.0
+layout_mode = 2
 text = "0"
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 94.0
-margin_right = 114.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 20, 20 )
-color = Color( 0.65098, 0.156863, 0.156863, 1 )
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+color = Color(0.65098, 0.156863, 0.156863, 1)
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

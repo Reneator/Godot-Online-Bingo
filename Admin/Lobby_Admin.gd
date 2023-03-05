@@ -4,17 +4,17 @@ var session_manager = Session_Manager.new()
 
 var full_ip_string
 
-onready var create_lobby_settings: Create_Lobby_Settings = Global.create_lobby_settings
+@onready var create_lobby_settings: Create_Lobby_Settings = Global.create_lobby_settings
 
 func _ready():
-	Game.connect("client_ready", self, "on_client_ready")
-	Game.connect("update_client_session", self, "on_update_client_session")
-#	Game.connect("bingo_confirmed", self, "on_bingo_confirmed")
-	Events.connect("admin_username_clicked", self, "on_username_clicked")
-	get_tree().connect("network_peer_disconnected", self, "on_network_peer_disconnected")
-	$HTTPRequest.connect("request_completed", self, "on_request_completed")
+	Game.connect("s_client_ready",Callable(self,"on_client_ready"))
+	Game.connect("s_update_client_session",Callable(self,"on_update_client_session"))
+#	Game.connect("bingo_confirmed",Callable(self,"on_bingo_confirmed"))
+	Events.connect("s_admin_username_clicked",Callable(self,"on_username_clicked"))
+	get_tree().get_multiplayer().connect("peer_disconnected",Callable(self,"on_network_peer_disconnected"))
+	$HTTPRequest.connect("request_completed",Callable(self,"on_request_completed"))
 	$HTTPRequest.request("https://api.ipify.org")
-	$Bingo_Confirm_Popup.connect("confirmed", self, "on_bingo_confirmed")
+	$Bingo_Confirm_Popup.connect("s_confirmed",Callable(self,"on_bingo_confirmed"))
 	$Lobby_Admin/HBoxContainer2/Bingo_Entries_Container.initialize(Global.bingo_entries)
 	$Bingo_Confirm_Popup.validator = $Lobby_Admin/HBoxContainer2/Scroll/Entries_Log
 
@@ -63,9 +63,9 @@ func check_bingo(session: Session):
 	return Bingo.check_for_bingo(session.bingo_entries_states)
 
 func _on_Copy_IP_Button_pressed():
-	OS.set_clipboard(full_ip_string)
+	DisplayServer.clipboard_set(full_ip_string)
 	
-	var clip_board = OS.get_clipboard()
+	var clip_board = DisplayServer.clipboard_get()
 	if clip_board == full_ip_string:
 		print("Copied successfully")
 

@@ -1,65 +1,42 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://cyx5gyb4q2cih"]
 
-[ext_resource path="res://Bingo/Bingo.gd" type="Script" id=1]
-[ext_resource path="res://Bingo/Bingo_Button.tscn" type="PackedScene" id=2]
+[ext_resource type="Script" path="res://Bingo/Bingo.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bx6qu0fv4vjtw" path="res://Bingo/Bingo_Button.tscn" id="2"]
 
 [node name="Bingo" type="GridContainer"]
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -524.0
-margin_bottom = -100.0
-rect_min_size = Vector2( 500, 500 )
+offset_right = -524.0
+offset_bottom = -100.0
 columns = 3
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-bingo_element = ExtResource( 2 )
+script = ExtResource("1")
+bingo_element = ExtResource("2")
 
 [node name="Button" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-margin_right = 164.0
-margin_bottom = 164.0
+layout_mode = 2
 
 [node name="Button2" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-margin_left = 168.0
-margin_right = 332.0
-margin_bottom = 164.0
+layout_mode = 2
 
 [node name="Button3" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-margin_left = 336.0
-margin_right = 500.0
-margin_bottom = 164.0
+layout_mode = 2
 
 [node name="Button4" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-margin_top = 168.0
-margin_right = 164.0
-margin_bottom = 332.0
+layout_mode = 2
 
 [node name="Button5" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-margin_left = 168.0
-margin_top = 168.0
-margin_right = 332.0
-margin_bottom = 332.0
+layout_mode = 2
 
 [node name="Button6" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-margin_left = 336.0
-margin_top = 168.0
-margin_right = 500.0
-margin_bottom = 332.0
+layout_mode = 2
 
 [node name="Button7" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-margin_top = 336.0
-margin_right = 164.0
-margin_bottom = 500.0
+layout_mode = 2
 
 [node name="Button8" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-margin_left = 168.0
-margin_top = 336.0
-margin_right = 332.0
-margin_bottom = 500.0
+layout_mode = 2
 
 [node name="Button9" parent="." instance_placeholder="res://Bingo/Bingo_Button.tscn"]
-margin_left = 336.0
-margin_top = 336.0
-margin_right = 500.0
-margin_bottom = 500.0
+layout_mode = 2

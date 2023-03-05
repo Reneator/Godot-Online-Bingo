@@ -1,87 +1,59 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://7fwlp504k7r0"]
 
-[ext_resource path="res://Bingo/Bingo.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Admin/Bingo_Confirm_Popup.gd" type="Script" id=4]
+[ext_resource type="PackedScene" uid="uid://cyx5gyb4q2cih" path="res://Bingo/Bingo.tscn" id="2"]
+[ext_resource type="Script" path="res://Admin/Bingo_Confirm_Popup.gd" id="4"]
 
 [node name="Bingo_Confirm_Popup" type="PanelContainer"]
-margin_left = 244.39
-margin_top = 27.0537
-margin_right = 758.39
-margin_bottom = 589.054
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+offset_left = 244.39
+offset_top = 27.0537
+offset_right = 758.39
+offset_bottom = 589.054
+script = ExtResource("4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 507.0
-margin_bottom = 567.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_right = 500.0
-margin_bottom = 14.0
+layout_mode = 2
 text = "Bingo!!!"
-align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 18.0
-margin_right = 500.0
-margin_bottom = 32.0
+layout_mode = 2
 
 [node name="Bingo_Popup_Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_right = 74.0
-margin_bottom = 14.0
+layout_mode = 2
 text = "Username: "
 
 [node name="Username_Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 78.0
-margin_right = 345.0
-margin_bottom = 14.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Username"
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 349.0
-margin_right = 440.0
-margin_bottom = 14.0
+layout_mode = 2
 text = "Creation Date:"
 
 [node name="Creation_Date_Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 444.0
-margin_right = 500.0
-margin_bottom = 14.0
+layout_mode = 2
 text = "12:10:20"
 
-[node name="Bingo" parent="VBoxContainer" instance=ExtResource( 2 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 36.0
-margin_right = 500.0
-margin_bottom = 536.0
+[node name="Bingo" parent="VBoxContainer" instance=ExtResource("2")]
+layout_mode = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 540.0
-margin_right = 500.0
-margin_bottom = 560.0
+layout_mode = 2
 
 [node name="Confirm_Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
-margin_right = 62.0
-margin_bottom = 20.0
+layout_mode = 2
 text = "Confirm"
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
-margin_left = 66.0
-margin_top = 3.0
-margin_right = 444.0
-margin_bottom = 17.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Reject_Button" type="Button" parent="VBoxContainer/HBoxContainer2"]
-margin_left = 448.0
-margin_right = 500.0
-margin_bottom = 20.0
+layout_mode = 2
 text = "Reject"
+
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Confirm_Button" to="." method="_on_Confirm_Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/Reject_Button" to="." method="_on_Reject_Button_pressed"]

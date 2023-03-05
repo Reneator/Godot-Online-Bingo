@@ -1,152 +1,108 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://dgdwgiecxcc07"]
 
-[ext_resource path="res://Admin/User_List.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Admin/Admin_Entries_List.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Admin/Lobby_Admin.gd" type="Script" id=3]
-[ext_resource path="res://Entry_Log/Entry_Log_List.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Bingo/Bingo.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Admin/Bingo_Confirm_Popup.tscn" type="PackedScene" id=6]
+[ext_resource type="PackedScene" uid="uid://83nkoefnolld" path="res://Admin/User_List.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://8vmglle55u7i" path="res://Admin/Admin_Entries_List.tscn" id="2"]
+[ext_resource type="Script" path="res://Admin/Lobby_Admin.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://dxihq3lck8fc5" path="res://Entry_Log/Entry_Log_List.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://cyx5gyb4q2cih" path="res://Bingo/Bingo.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://7fwlp504k7r0" path="res://Admin/Bingo_Confirm_Popup.tscn" id="6"]
 
 [node name="Lobby_Admin" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("3")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="Lobby_Admin" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Lobby_Admin"]
-margin_right = 1024.0
-margin_bottom = 20.0
+layout_mode = 2
 
 [node name="Label" type="Label" parent="Lobby_Admin/HBoxContainer"]
-margin_top = 3.0
-margin_right = 40.0
-margin_bottom = 17.0
+layout_mode = 2
 text = "Server"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Lobby_Admin/HBoxContainer"]
-margin_left = 44.0
-margin_right = 1024.0
-margin_bottom = 20.0
+layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
 [node name="Copy_IP_Button" type="Button" parent="Lobby_Admin/HBoxContainer/HBoxContainer"]
-margin_left = 882.0
-margin_right = 925.0
-margin_bottom = 20.0
+layout_mode = 2
 text = "Copy"
 
 [node name="IP_Address" type="Label" parent="Lobby_Admin/HBoxContainer/HBoxContainer"]
-margin_left = 929.0
-margin_top = 3.0
-margin_right = 942.0
-margin_bottom = 17.0
+layout_mode = 2
 text = "IP"
 
 [node name="Label" type="Label" parent="Lobby_Admin/HBoxContainer/HBoxContainer"]
-margin_left = 946.0
-margin_top = 3.0
-margin_right = 950.0
-margin_bottom = 17.0
+layout_mode = 2
 text = ":"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Port" type="Label" parent="Lobby_Admin/HBoxContainer/HBoxContainer"]
-margin_left = 954.0
-margin_top = 3.0
-margin_right = 980.0
-margin_bottom = 17.0
+layout_mode = 2
 text = "Port"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Lobby_Admin"]
-margin_top = 24.0
-margin_right = 1024.0
-margin_bottom = 550.0
+layout_mode = 2
 
-[node name="Bingo_Entries_Container" parent="Lobby_Admin/HBoxContainer2" instance=ExtResource( 2 )]
-margin_right = 460.0
-margin_bottom = 526.0
+[node name="Bingo_Entries_Container" parent="Lobby_Admin/HBoxContainer2" instance=ExtResource("2")]
+layout_mode = 2
 
 [node name="Scroll" type="ScrollContainer" parent="Lobby_Admin/HBoxContainer2"]
-margin_left = 464.0
-margin_right = 920.0
-margin_bottom = 526.0
-rect_min_size = Vector2( 456, 526 )
-scroll_horizontal_enabled = false
+custom_minimum_size = Vector2(456, 526)
+layout_mode = 2
 
-[node name="Entries_Log" parent="Lobby_Admin/HBoxContainer2/Scroll" instance=ExtResource( 4 )]
-margin_right = 456.0
-margin_bottom = 526.0
+[node name="Entries_Log" parent="Lobby_Admin/HBoxContainer2/Scroll" instance=ExtResource("4")]
+layout_mode = 2
 size_flags_vertical = 3
 
-[node name="User_List" parent="Lobby_Admin/HBoxContainer2" instance=ExtResource( 1 )]
-margin_left = 924.0
-margin_bottom = 526.0
-rect_min_size = Vector2( 100, 0 )
+[node name="User_List" parent="Lobby_Admin/HBoxContainer2" instance=ExtResource("1")]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
 
 [node name="Bingo_Popup" type="PanelContainer" parent="."]
 visible = false
-margin_left = 284.465
-margin_top = -1.55731
-margin_right = 798.465
-margin_bottom = 512.443
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 0
+offset_left = 284.465
+offset_top = -1.55731
+offset_right = 798.465
+offset_bottom = 512.443
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Bingo_Popup"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 507.0
-margin_bottom = 531.0
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Bingo_Popup/VBoxContainer"]
-margin_right = 500.0
-margin_bottom = 20.0
+layout_mode = 2
 
 [node name="Bingo_Popup_Label" type="Label" parent="Bingo_Popup/VBoxContainer/HBoxContainer"]
-margin_top = 3.0
-margin_right = 476.0
-margin_bottom = 17.0
+layout_mode = 2
 size_flags_horizontal = 3
 text = "Username"
 
 [node name="Close_Button" type="Button" parent="Bingo_Popup/VBoxContainer/HBoxContainer"]
-margin_left = 480.0
-margin_right = 500.0
-margin_bottom = 20.0
+layout_mode = 2
 text = "X"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Bingo" parent="Bingo_Popup/VBoxContainer" instance=ExtResource( 5 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_top = 24.0
-margin_right = 500.0
-margin_bottom = 524.0
+[node name="Bingo" parent="Bingo_Popup/VBoxContainer" instance=ExtResource("5")]
+layout_mode = 2
 
-[node name="Bingo_Confirm_Popup" parent="." instance=ExtResource( 6 )]
+[node name="Bingo_Confirm_Popup" parent="." instance=ExtResource("6")]
 visible = false
-margin_left = 248.025
-margin_top = 31.0397
-margin_right = 762.025
-margin_bottom = 593.04
+layout_mode = 0
+offset_left = 248.025
+offset_top = 31.0397
+offset_right = 762.025
+offset_bottom = 593.04
 
 [connection signal="pressed" from="Lobby_Admin/HBoxContainer/HBoxContainer/Copy_IP_Button" to="." method="_on_Copy_IP_Button_pressed"]
 [connection signal="pressed" from="Bingo_Popup/VBoxContainer/HBoxContainer/Close_Button" to="." method="_on_Close_Button_pressed"]

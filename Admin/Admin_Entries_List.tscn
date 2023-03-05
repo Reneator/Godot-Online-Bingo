@@ -1,34 +1,26 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://8vmglle55u7i"]
 
-[ext_resource path="res://Admin/Admin_Entries_List.gd" type="Script" id=1]
-[ext_resource path="res://Admin/Bingo_Entry.tscn" type="PackedScene" id=2]
+[ext_resource type="Script" path="res://Admin/Admin_Entries_List.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cxhsppldqf5qw" path="res://Admin/Bingo_Entry.tscn" id="2"]
 
 [node name="Bingo_Entries_Container" type="VBoxContainer"]
-margin_right = 451.0
-margin_bottom = 26.0
-rect_clip_content = true
+clip_contents = true
+offset_right = 451.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-bingo_entry_scene = ExtResource( 2 )
+script = ExtResource("1")
+bingo_entry_scene = ExtResource("2")
 
 [node name="Label" type="Label" parent="."]
-margin_right = 451.0
-margin_bottom = 14.0
+layout_mode = 2
 text = "Bingo-Entries:"
 
 [node name="HSeparator" type="HSeparator" parent="."]
-margin_top = 18.0
-margin_right = 451.0
-margin_bottom = 22.0
+layout_mode = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
-margin_top = 26.0
-margin_right = 451.0
-margin_bottom = 526.0
-rect_min_size = Vector2( 450, 500 )
-scroll_horizontal_enabled = false
+custom_minimum_size = Vector2(450, 500)
+layout_mode = 2
 
 [node name="Bingo_Entries" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2

@@ -1,4 +1,4 @@
-extends Reference
+extends RefCounted
 class_name Session_Manager
 
 #only used by Lobby_Admin
@@ -6,11 +6,11 @@ var sessions = []
 
 var session_history = [] # collections of all sessions generated in the current sittings
 
-signal on_change()
+signal s_on_change()
 
 func get_session(request_session, grid_size):
 	var session = check_for_existing_session(request_session.username)
-	emit_signal("on_change")
+	emit_signal("s_on_change")
 	if session:
 		session.peer_id = request_session.peer_id
 		session.is_connected = true	
@@ -27,13 +27,13 @@ func generate_new(request_session, grid_size):
 	session.grid_size = grid_size
 	session.username = request_session.username
 	session.is_connected = true
-	session.creation_date = OS.get_datetime()
+	session.creation_date = Time.get_datetime_dict_from_system()
 	sessions.append(session)
 	return session
 
 func generate_entries(grid_size, tries = 0, max_tries = 5):
 	if tries > max_tries:
-		print("Session Manager tried to generate new Bingo entries, but had duplicates for %d times while max tries are %d so it got cancelled" %[tries, max_tries])
+		print("Session Manager tried to generate new Bingo entries, but had duplicates for %d times while max tries are %d so it got canceled" %[tries, max_tries])
 		return null
 	var entries = select_bingo_entries(Global.bingo_entries, grid_size)
 	var is_duplicate = check_duplicate(entries)
@@ -48,7 +48,7 @@ func update_session(update_session : Session):
 		print("No session found to update! Discarded Session Update!")
 		return
 	session.bingo_entries_states = update_session.bingo_entries_states
-	emit_signal("on_change")
+	emit_signal("s_on_change")
 
 func check_duplicate(entries):
 	if entries.size() == 0:
@@ -114,6 +114,6 @@ func disconnect_session(peer_id):
 			session.is_connected = false
 			print("Session of peer_id %s disconnected!" % peer_id)
 			return
-	emit_signal("on_change")
+	emit_signal("s_on_change")
 
 

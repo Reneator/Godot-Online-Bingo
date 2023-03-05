@@ -2,8 +2,8 @@ extends Node
 
 
 func _ready():
-	get_tree().connect("network_peer_connected",self,"on_network_peer_connected")
-	get_tree().connect("network_peer_disconnected",self,"on_network_peer_disconnected")
+	get_tree().get_multiplayer().connect("peer_connected",Callable(self,"on_network_peer_connected"))
+	get_tree().get_multiplayer().connect("peer_disconnected",Callable(self,"on_network_peer_disconnected"))
 	
 func on_network_peer_connected(id):
 	if Global.is_host:

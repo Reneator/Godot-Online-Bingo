@@ -1,15 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://dxihq3lck8fc5"]
 
-[ext_resource path="res://Entry_Log/Entry_Log_List.gd" type="Script" id=1]
-[ext_resource path="res://Entry_Log/Log_Entry.tscn" type="PackedScene" id=2]
+[ext_resource type="Script" path="res://Entry_Log/Entry_Log_List.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://b61iqhug4eohj" path="res://Entry_Log/Log_Entry.tscn" id="2"]
 
 [node name="Entries_Log" type="VBoxContainer"]
-margin_right = 451.0
-margin_bottom = 26.0
-rect_clip_content = true
+clip_contents = true
+offset_right = 451.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-log_entry_scene = ExtResource( 2 )
+script = ExtResource("1")
+log_entry_scene = ExtResource("2")

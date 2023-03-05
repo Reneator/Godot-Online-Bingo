@@ -1,13 +1,13 @@
 extends VBoxContainer
 
-onready var join_lobby_settings : Join_Lobby_Settings = Global.join_lobby_settings
+@onready var join_lobby_settings : Join_Lobby_Settings = Global.join_lobby_settings
 
 var bingo_score = 0
 
 func _ready():
-	$Bingo.connect("change", self, "on_bingo_change")
-	Game.connect("bingo_confirmed", self, "on_bingo_confirmed")
-	Game.connect("new_bingo", self, "on_new_bingo")
+	$Bingo.connect("s_change",Callable(self,"on_bingo_change"))
+	Game.connect("s_bingo_confirmed",Callable(self,"on_bingo_confirmed"))
+	Game.connect("s_new_bingo",Callable(self,"on_new_bingo"))
 	load_game()
 
 func load_game():
@@ -40,5 +40,5 @@ func on_new_bingo(session: Session):
 
 func _on_Menu_Button_pressed():
 	multiplayer.network_peer.close_connection()
-	get_tree().change_scene_to(Scenes.main_menu)
+	get_tree().change_scene_to_packed(Scenes.main_menu)
 	pass # Replace with function body.

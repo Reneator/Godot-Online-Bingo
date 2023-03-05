@@ -4,34 +4,37 @@ var is_valid
 
 var creation_date
 
-signal pressed()
+signal s_pressed()
 
-var pressed setget set_pressed
+var pressed : set = set_pressed
+
+@onready var button = $Button
+@onready var label = $Button/Label
 
 func set_pressed(_pressed):
-	$Button.pressed = _pressed
+	button.button_pressed = _pressed
 
 func get_pressed():
-	return $Button.pressed
+	return button.pressed
 
 func refresh():
 	if get_pressed():
 		if is_valid:
-			modulate = Color.green
+			modulate = Color.GREEN
 		else:
-			modulate = Color.red
+			modulate = Color.RED
 	else:
 		if is_valid:
-			modulate = Color.blue
+			modulate = Color.BLUE
 
 func set_text(text):
-	$Label.text = text
+	label.text = text
 
-func to_string():
+func _to_string():
 	return "%s,%s" %[$Label.text, get_pressed()]
 
 func get_state():
 	return str(get_pressed())
 	
 func _on_Button_pressed():
-	emit_signal("pressed")
+	emit_signal("s_s_pressed")

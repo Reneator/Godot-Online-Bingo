@@ -1,14 +1,14 @@
 extends GridContainer
 class_name Bingo
 
-export (int) var grid_size = 3
+@export var grid_size = 3
 
-export (PackedScene) var bingo_element
+@export var bingo_element : PackedScene
 
-export (bool) var disabled = false
+@export var disabled = false
 
-signal change()
-signal bingo()
+signal s_change()
+signal s_bingo()
 
 var rows
 
@@ -20,7 +20,7 @@ func initialize_with_session(session : Session, validate = true):
 		var pressed = session.bingo_entries_states[i]
 		var element = elements[i]
 		var is_pressed = (pressed == "True")
-		element.pressed = is_pressed
+		element.button_pressed = is_pressed
 		if validate and session.bingo_entries_validation.size() > 0:
 			element.creation_date = session.creation_date
 			element.is_valid = session.bingo_entries_validation[i]
@@ -38,13 +38,12 @@ func initialize(entries, _grid_size):
 	return elements
 
 func create_element(entry_data):
-	var element = bingo_element.instance()
-	
+	var element = bingo_element.instantiate()
+	add_child(element)
 	element.set_text(entry_data)
 	if disabled:
 		element.mouse_filter = MOUSE_FILTER_IGNORE
-	element.connect("pressed", self, "on_bingo_button_pressed")
-	add_child(element)
+	element.connect("s_pressed",Callable(self,"on_bingo_button_pressed"))
 	return element
 
 func clear():
@@ -56,9 +55,9 @@ func on_bingo_button_pressed():
 		return
 	var entries = get_current_state()
 #	var is_bingo = check_for_bingo(entries)
-	emit_signal("change", entries)
+	emit_signal("s_change", entries)
 #	if is_bingo:
-#		emit_signal("bingo")
+#		emit_signal("s_bingo")
 
 func get_entries():
 	return get_children()
@@ -138,5 +137,5 @@ static func check_diagonal(entries):
 		return true
 
 func bingo():
-	emit_signal("bingo")
+	emit_signal("s_bingo")
 	print("Bingo!")
